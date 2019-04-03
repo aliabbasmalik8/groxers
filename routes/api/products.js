@@ -6,6 +6,7 @@ router.post("/add", (req, res) => {
         name: req.body.name,
         pid: req.body.pid,
         description: req.body.description,
+        category: req.body.category,
         images: req.body.images,
         brand: req.body.brand,
         attributes: req.body.attributes,

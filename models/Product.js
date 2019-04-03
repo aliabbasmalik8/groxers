@@ -20,6 +20,7 @@ const ProductSchema = new Schema({
     attributes: {
         type: Object,
     },
+    category:[],
     skus: [],
     p_type: '',
     source: '',

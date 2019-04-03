@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 class Product extends Component{
     render(){
+        const { product } = this.props;
         return(
             <div className="product_container">
                 <div className="image_parent">
-                    <img src="https://d224nth7ac0evy.cloudfront.net/catalog/product/cache/9a894c8599c9525ecf8d6b4d9042d360/l/c/lcs-4_1_.jpg" alt="" />
+                    <img src={product.images[0]} alt="" />
                 </div>
                 <div className="items_name">
-                    Test
+                    {product.name}
                 </div>
                 <div className="price">
-                    <div className="current_price">100</div>
-                    <div className="prev_price">100</div>
+                    <div className="current_price">{product.skus[0].price}</div>
+                    <div className="prev_price"></div>
                 </div>
-                <div className="learn_more">Learn More</div>
+                <Link to={"/cart/"+product.source+"/"+product.pid}>
+                    <div className="learn_more">Add to cart</div>
+                </Link>
             </div>
         )
     }

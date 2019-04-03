@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from "prop-types";
+import { getProducts } from './../../api/productApi'
 class PageHeader extends Component{
+    componentDidMount(){
+        this.props.products.length === 0 &&
+            this.props.getProducts();
+    }
     render(){
         return(
             <div className="page_header">
@@ -26,4 +33,10 @@ class PageHeader extends Component{
         )
     }
 }
-export default PageHeader
+PageHeader.propTypes = {
+    getProducts: PropTypes.func.isRequired,
+};
+const mapStateToProps = state => ({
+    products: state.items.products,
+});
+export default connect(mapStateToProps,{ getProducts })(PageHeader)

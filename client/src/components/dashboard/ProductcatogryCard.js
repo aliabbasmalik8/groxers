@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 
 class ProductcatagoryCard extends Component{
     render(){
+        const { name, image } = this.props;
         return(
             <div className="single_card">
-                <div className="image_parent">
-                    <img src="https://d224nth7ac0evy.cloudfront.net/wysiwyg/lawn-collection-cat.jpg" alt=""/>
-                </div>  
-                <div className="content">
-                    <div className="title">IDES PART</div>
-                    <div className="shop_now_button">shop now</div>
-                </div>
+                <Link to={"/products/"+name}>
+                    <div className="image_parent">
+                        <img src={image} alt=""/>
+                    </div>  
+                    <div className="content">
+                        <div className="title">{name}</div>
+                        <div className="shop_now_button">shop now</div>
+                    </div>
+                </Link>
             </div>
         )
     }

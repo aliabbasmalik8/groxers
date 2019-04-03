@@ -86,8 +86,17 @@
                 background: #fff;
                 margin: 5px;
                 width: 33%;
+                a{
+                    &:hover{
+                        text-decoration: none;
+                    }
+                }
                 .image_parent{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     img{
+                        height: 260px;
                         width: 100%;
                         cursor: pointer;
                     }
@@ -102,7 +111,10 @@
                     .shop_now_button{
                         text-align: center;
                         cursor: pointer;
+                        color: #282828;
+                        text-decoration: none;
                         &:hover{
+                            text-decoration: none;
                             color: #fc7070;
                         }
                     }
@@ -117,5 +129,10 @@
         border-color: #282828;
         background: #282828;
         padding: 20px;
+    }
+}
+@media all and(max-width: 1300px){
+    .dashboard_container .catagory_cards .single_row .single_card .image_parent img{
+        height: 200px;
     }
 }
