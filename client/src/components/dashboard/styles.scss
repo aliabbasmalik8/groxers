@@ -52,6 +52,15 @@
             background-color: #282828;
             color: #fff;
             padding: 10px 80px;
+            display: inline-flex;
+            width: 100%;
+            justify-content: space-between;
+            a{
+                color: #fff;
+                &:hover{
+                    text-decoration: none;
+                }
+            }
             .inner_header{
                 padding: 0 10px;
             }

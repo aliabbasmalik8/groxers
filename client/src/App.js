@@ -12,6 +12,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProductIdex from "./components/products/ProductIndex"
 import Cart from "./components/cart/Cart"
+import CartList from "./components/cartList/CartList"
 
 import 'bootstrap/dist/css/bootstrap.css';
 // Check for token to keep user logged in
@@ -42,6 +43,7 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/products" component={ProductIdex} />
+            <Route exact path="/cart" component={CartList} />
             <Route path="/products/:productCatagory" component={ProductIdex}  />
             <Route exact path="/cart/:source/:id" component={Cart} />
             <Switch>

@@ -34,7 +34,7 @@ class ProductInfo extends Component{
     render(){
         const { product } = this.props;
         return(
-            <div className="product_info_container">
+            <div className="product_info_container col-6">
                 <div className="name">
                     {product && product.name}
                 </div>

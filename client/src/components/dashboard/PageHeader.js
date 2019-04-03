@@ -19,6 +19,7 @@ class PageHeader extends Component{
         this.props.logoutUser();
     }
     render(){
+        const { cart, total } = this.props;
         return(
             <div className="page_header">
                 <div className="panel_warpper">
@@ -48,6 +49,12 @@ class PageHeader extends Component{
                         <div className="inner_header">
                             Hello world
                         </div>
+                        <Link to={"/cart"}>
+                            <div>
+                                <i className="fas fa-cart-plus"></i>&nbsp;
+                                {'Cart: ('+cart.length+') ' + total + ' PK'}
+                            </div>
+                        </Link>
                     </div>
                 </nav>
             </div>
@@ -63,5 +70,6 @@ const mapStateToProps = state => ({
     products: state.items.products,
     auth: state.auth,
     cart: state.items.cart,
+    total: state.items.total,
 });
 export default connect(mapStateToProps,{ getProducts, logoutUser, getCartItems })(PageHeader)

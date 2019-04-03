@@ -4,7 +4,7 @@ import ReactImageMagnify from 'react-image-magnify';
 class ProductMeida extends Component{
     render(){
         return(
-            <div className="card product_media_container">
+            <div className="card product_media_container col-6">
                 <ReactImageMagnify {...{
                     smallImage: {
                         alt: 'Wristwatch by Ted Baker London',
