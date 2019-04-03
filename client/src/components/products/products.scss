@@ -18,8 +18,12 @@
                     background: #fff;
                     border: 1px solid #ddd;
                     .single_catagory{
+                        cursor: pointer;
                         padding: 10px;
                         border-bottom: 1px solid #e4e4e4;
+                        &:hover{
+                            background: #e4e4e4;
+                        }
                         .content{
                             text-transform: capitalize;
                             color: #000;

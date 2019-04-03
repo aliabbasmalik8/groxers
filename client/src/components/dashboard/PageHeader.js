@@ -1,18 +1,33 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { logoutUser } from "../../api/authApi";
 import { getProducts } from './../../api/productApi'
 class PageHeader extends Component{
     componentDidMount(){
         this.props.products.length === 0 &&
             this.props.getProducts();
     }
+    signOut(){
+        this.props.logoutUser();
+    }
     render(){
         return(
             <div className="page_header">
                 <div className="panel_warpper">
-                    <div className="create_account">CREATE AN ACCOUNT</div>
-                    <div className="sign_up">SIGN IN</div>
+                    {
+                        this.props.auth.isAuthenticated ?
+                            <div className="signout" onClick={()=>this.signOut()}>SIGN OUT</div> :
+                        <span>
+                            <Link to={"/register"}>
+                                <div className="create_account">CREATE AN ACCOUNT</div>
+                            </Link>
+                            <Link to={"/login"}>
+                                <div className="sign_up">SIGN IN</div>
+                            </Link>
+                        </span>
+                    }
                 </div>
                 <nav className="header_wrapper_content">
                     <div className="header_content">
@@ -35,8 +50,10 @@ class PageHeader extends Component{
 }
 PageHeader.propTypes = {
     getProducts: PropTypes.func.isRequired,
+    logoutUser: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({
     products: state.items.products,
+    auth: state.auth,
 });
-export default connect(mapStateToProps,{ getProducts })(PageHeader)
+export default connect(mapStateToProps,{ getProducts, logoutUser })(PageHeader)
