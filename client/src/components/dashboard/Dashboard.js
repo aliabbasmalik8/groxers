@@ -1,9 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React, { Component } from "react"
+import PropTypes from "prop-types"
 import { connect } from "react-redux";
-import { logoutUser } from "../../api/authApi";
-
+import { logoutUser } from "../../api/authApi"
+import PageHeader from './PageHeader'
+import SlickSlider from './SlickSlider'
+import ProductsCatagories from './ProductsCatagories'
+import Footer from './Footer';
 import './styles.scss'
 
 class Dashboard extends Component {
@@ -14,7 +16,10 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard_container">
-
+        <PageHeader />
+        <SlickSlider />
+        <ProductsCatagories />
+        <Footer />
       </div>
     );
   }

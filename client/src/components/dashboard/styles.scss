@@ -1,3 +1,121 @@
+.page_header{
+    .panel_warpper{
+        border-bottom: 1px solid #fff;
+        background-color: #fafafa;
+        color: #8b8b8b;
+        box-sizing: border-box;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 10px;
+        align-items: center;
+        .create_account{
+            padding-right: 10px;
+            cursor: pointer;
+            display: inline-flex;
+        }
+        .sign_up{
+            cursor: pointer;
+            display: inline-flex;
+        }
+    }
+    .header_wrapper_content{
+        .header_content{
+            padding: 20px;
+            display: inline-flex;
+            width: 100%;
+            justify-content: space-between;
+            background: #efefef;
+            .logo_parent{
+                img{
+                    width: 130px;
+                    height: 50px;
+                }
+            }
+            .cart_image_parent{
+
+            }
+        }
+        .fixed-nav{
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+        .header_wrapper_bottom{
+            background-color: #282828;
+            color: #fff;
+            padding: 10px 80px;
+            .inner_header{
+                padding: 0 10px;
+            }
+        }
+    }
+}
 .dashboard_container{
-    
+    background: #fafafa;
+    .slider_container{
+        margin: 0 auto;
+        .slick-slide{
+            img {
+                width: 100%;
+                height: 400px;
+            }    
+        }
+        .slick-next{
+            right: 20px;
+        }
+        .slick-prev {
+            left: 5px;
+            z-index: 1;
+        }
+        .slick-dots{
+            bottom: 10px;
+        }
+    }
+    .catagory_cards{
+        padding: 40px 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        .single_row{
+            display: inline-flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 10px 20px;
+            .single_card{
+                background: #fff;
+                margin: 5px;
+                width: 33%;
+                .image_parent{
+                    img{
+                        width: 100%;
+                        cursor: pointer;
+                    }
+                }
+                .content{
+                    padding: 20px;
+                    .title{
+                        font-size: 18px;
+                        font-weight: 600;
+                        text-align: center;
+                    }
+                    .shop_now_button{
+                        text-align: center;
+                        cursor: pointer;
+                        &:hover{
+                            color: #fc7070;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.footer{
+    .bottom_footer{
+        color: #fff;
+        border-color: #282828;
+        background: #282828;
+        padding: 20px;
+    }
 }
