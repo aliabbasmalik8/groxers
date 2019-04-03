@@ -2,19 +2,23 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 // Create Schema
 const CartSchema = new Schema({
-  name: {
+  sessionId: {
     type: String,
     required: true
   },
-  email: {
+  cartItems:[],
+  status:{
     type: String,
     required: true
   },
-  password: {
-    type: String,
-    required: true
+  total:{
+    type: Number,
   },
-  date: {
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt:{
     type: Date,
     default: Date.now
   }

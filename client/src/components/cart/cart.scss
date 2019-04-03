@@ -73,6 +73,10 @@
                         border: 0.2px solid #ddd;
                         text-align: center;
                         padding: 10px 20px;
+                        cursor: pointer;
+                        &:hover{
+                            background: #ddd;
+                        }
                     }
                     .count{
                         border: 0.2px solid #ddd;
@@ -84,6 +88,10 @@
                         padding: 10px 20px;
                         border: 0.2px solid #ddd;
                         text-align: center;
+                        cursor: pointer;
+                        &:hover{
+                            background: #ddd;
+                        }
                     }
                 }
                 .add_cart_btn{
