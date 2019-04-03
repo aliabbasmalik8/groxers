@@ -27,12 +27,16 @@ export default function(state = initialState, action) {
             }
         case GET_CART_ITEMS:
             total = 0;
-            for(let i=0; i<action.payload.cartItems.length; i++){
-                total += action.payload.cartItems[i].total;
+            let data = [];
+            if(action.payload && action.payload.cartItems){
+                for(let i=0; i<action.payload.cartItems.length; i++){
+                    total += action.payload.cartItems[i].total;
+                }
+                data = action.payload.cartItems;
             }
             return {
                 ...state,
-                cart: action.payload.cartItems,
+                cart: data,
                 total: total,
             }
         default:
