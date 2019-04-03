@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getProductsAction, addCartAction } from './../actions/productAction'
+import { getProductsAction, addCartAction, getCartItemsAction } from './../actions/productAction'
 
 export const getProducts = userData => dispatch =>{
   axios
@@ -18,6 +18,13 @@ export const addIntoCart = cart => dispatch =>{
   axios
     .post("/api/cart/add", cart)
     .then(res =>{
-      dispatch(addCartAction(res.data))
+      dispatch(addCartAction(cart))
+    })
+};
+export const getCartItems = data => dispatch =>{
+  axios
+    .post("/api/cart/getCartItems", data)
+    .then(res =>{
+      dispatch(getCartItemsAction(res.data))
     })
 };

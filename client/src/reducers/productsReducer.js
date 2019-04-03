@@ -1,6 +1,7 @@
 import {
     GET_PRODUCTS,
-    ADD_CART
+    ADD_CART,
+    GET_CART_ITEMS
 } from "../actions/types";
 const initialState = {
    products: [],
@@ -15,10 +16,15 @@ export default function(state = initialState, action) {
             };
         case ADD_CART:
             let newCart = Object.assign([], state.cart);
-            newCart.push(action.payload);
+            newCart.push(action.payload.cartItems);
             return {
                 ...state,
                 cart: [...newCart]
+            }
+        case GET_CART_ITEMS:
+            return {
+                ...state,
+                cart: action.payload.cartItems
             }
         default:
             return state;

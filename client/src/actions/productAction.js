@@ -2,6 +2,7 @@ import {
     GET_PRODUCTS,
     ADD_PRODUCTS,
     ADD_CART,
+    GET_CART_ITEMS,
   } from "./types";
   
 export function getProductsAction(payload){
@@ -19,6 +20,12 @@ export function addProductsAction(payload){
 export function addCartAction(payload){
   return {
       type: ADD_CART,
+      payload,
+  }
+};
+export function getCartItemsAction(payload){
+  return {
+      type: GET_CART_ITEMS,
       payload,
   }
 };

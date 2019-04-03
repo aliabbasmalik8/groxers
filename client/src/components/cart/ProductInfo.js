@@ -29,7 +29,6 @@ class ProductInfo extends Component{
             cartItems: cartItem,
             total: parseFloat(product.skus[0].price) * this.state.quantity,
         }
-        debugger;
         this.props.addIntoCart(cart);
     }
     render(){

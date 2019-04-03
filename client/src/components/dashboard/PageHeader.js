@@ -3,11 +3,17 @@ import { connect } from 'react-redux'
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { logoutUser } from "../../api/authApi";
-import { getProducts } from './../../api/productApi'
+import { getProducts, getCartItems } from './../../api/productApi'
 class PageHeader extends Component{
     componentDidMount(){
         this.props.products.length === 0 &&
             this.props.getProducts();
+        if(this.props.cart.length === 0){
+            let data={
+                sessionId: this.props.auth.user.id,
+            }
+            this.props.getCartItems(data);
+        }
     }
     signOut(){
         this.props.logoutUser();
@@ -51,9 +57,11 @@ class PageHeader extends Component{
 PageHeader.propTypes = {
     getProducts: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
+    getCartItems:  PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
     products: state.items.products,
     auth: state.auth,
+    cart: state.items.cart,
 });
-export default connect(mapStateToProps,{ getProducts, logoutUser })(PageHeader)
+export default connect(mapStateToProps,{ getProducts, logoutUser, getCartItems })(PageHeader)
