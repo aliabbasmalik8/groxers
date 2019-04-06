@@ -3,17 +3,18 @@ import ReactImageMagnify from 'react-image-magnify';
 
 class ProductMeida extends Component{
     render(){
+        const { product } = this.props;
         return(
             <div className="card product_media_container col-6">
                 <ReactImageMagnify {...{
                     smallImage: {
                         alt: 'Wristwatch by Ted Baker London',
-                        src: 'https://d224nth7ac0evy.cloudfront.net/catalog/product/cache/ed9f5ebe2a117625f6cd6336daddd764/s/c/scn52-front.jpg',
+                        src: product && product.images && product.images[0],
                         width: 500,
                         height:550,
                     },
                     largeImage: {
-                        src: 'https://d224nth7ac0evy.cloudfront.net/catalog/product/cache/ed9f5ebe2a117625f6cd6336daddd764/s/c/scn52-front.jpg',
+                        src: product && product.images && product.images[0],
                         width: 1200,
                         height: 1800
                     }

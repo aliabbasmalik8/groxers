@@ -18,8 +18,16 @@ export default function(state = initialState, action) {
         case ADD_CART:
             let newCart = Object.assign([], state.cart);
             let total = state.total;
-            newCart.push(action.payload.cartItems);
-            total += action.payload.cartItems.total;
+            let cartItems = action.payload.cartItems;
+            let index = newCart.findIndex(obj => {
+                return obj.product.pid === cartItems.product.pid && obj.product.source === cartItems.product.source;
+            })
+            if(index !== -1){
+                newCart[index].quantity += cartItems.quantity;
+            }else{
+                newCart.push(cartItems);
+            }
+            total += cartItems.total;
             return {
                 ...state,
                 cart: [...newCart],

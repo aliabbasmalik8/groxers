@@ -7,7 +7,14 @@ router.post("/add", (req, res) => {
         .then(item => {
             if (item) {
                 let updatedCartItems = item.cartItems;
-                updatedCartItems.push(req.body.cartItems);
+                let inCommingProduct = req.body.cartItems.product;
+                let index = updatedCartItems.findIndex(obj => {return obj.product.pid == inCommingProduct.pid && obj.product.source == inCommingProduct.source});
+                if(index != -1){
+                    updatedCartItems[index].quantity += req.body.cartItems.quantity;
+                    console.log(index);
+                }else{
+                    updatedCartItems.push(req.body.cartItems);
+                }
                 item
                     .updateOne({$set: {"cartItems":updatedCartItems}},{new: true})
                     .then(cart =>res.json(cart))
