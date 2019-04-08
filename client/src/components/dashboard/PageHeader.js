@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { logoutUser } from "../../api/authApi";
 import { getProducts, getCartItems } from './../../api/productApi'
+
 class PageHeader extends Component{
     componentDidMount(){
         this.props.products.length === 0 &&
@@ -14,12 +15,19 @@ class PageHeader extends Component{
             }
             this.props.getCartItems(data);
         }
+        window.addEventListener('scroll', this.handleScroll);
+    }
+    componentWillUnmount(){
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+    handleScroll(){
+        
     }
     signOut(){
         this.props.logoutUser();
     }
     render(){
-        const { cart, total } = this.props;
+        // const { cart, total } = this.props;
         return(
             <div className="page_header">
                 <div className="panel_warpper">
@@ -46,15 +54,46 @@ class PageHeader extends Component{
                         </div>
                     </div>
                     <div className="header_wrapper_bottom">
-                        <div className="inner_header">
-                            Hello world
-                        </div>
-                        <Link to={"/cart"}>
+                        <Link to={"/products/Electronics"}>
+                            <div className="inner_header">Electronics</div>
+                        </Link>
+                        <Link to={"/products/Men's Clothing"}>
+                            <div className="inner_header">Men's Clothing</div>
+                        </Link>
+                        <Link to={"/products/Women's Clothing"}>
+                            <div className="inner_header">Women's Clothing</div>
+                        </Link>
+                        <Link to={"/products/Accessories"}>
+                            <div className="inner_header">Accessories</div>
+                        </Link>
+                        <Link to={"/products/Decoration"}>
+                            <div className="inner_header">Decoration</div>
+                        </Link>
+                        <Link to={"/products/Toys"}>
+                            <div className="inner_header">Toys</div>
+                        </Link>
+                        <Link to={"/products/Grocery"}>
+                            <div className="inner_header">Grocery</div>
+                        </Link>
+                        <Link to={"/products/Health and Beauty"}>
+                            <div className="inner_header">Health and Beauty</div>
+                        </Link>
+                        <Link to={"/products/Household Essentials"}>
+                            <div className="inner_header">Household Essentials</div>
+                        </Link>
+                        <Link to={"/products/Baby Care"}>
+                            <div className="inner_header">Baby Care</div>
+                        </Link>
+                        <Link to={"/products/Pet Food"}>
+                            <div className="inner_header">Pet Food</div>
+                        </Link>
+                        
+                        {/* <Link to={"/cart"}>
                             <div>
                                 <i className="fas fa-cart-plus"></i>&nbsp;
                                 {'Cart: ('+cart.length+') ' + total + ' PK'}
                             </div>
-                        </Link>
+                        </Link> */}
                     </div>
                 </nav>
             </div>
@@ -72,4 +111,4 @@ const mapStateToProps = state => ({
     cart: state.items.cart,
     total: state.items.total,
 });
-export default connect(mapStateToProps,{ getProducts, logoutUser, getCartItems })(PageHeader)
+export default connect(mapStateToProps,{ getProducts, logoutUser, getCartItems })(withRouter(PageHeader))

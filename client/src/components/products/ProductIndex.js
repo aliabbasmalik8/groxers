@@ -14,8 +14,9 @@ class ProductIdex extends Component{
         this.filterProducts = this.filterProducts.bind(this);
     }
     componentDidMount(){
-        const { products } = this.props;
         let catagory = this.props.match.params.productCatagory;
+        this.props.history.push('/products/'+catagory)
+        const { products } = this.props;
         let filterProducts = [];
         products.map(product =>{
             if(product.category[0] === catagory){
