@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactImageMagnify from 'react-image-magnify';
-
 class ProductMeida extends Component{
     render(){
         const { product } = this.props;
@@ -15,10 +14,12 @@ class ProductMeida extends Component{
                     },
                     largeImage: {
                         src: product && product.images && product.images[0],
-                        width: 1200,
-                        height: 1800
+                        width: 1300,
+                        height: 1800,
+                        zIndex: 1,
                     }
-                }} />
+                }}
+                />
             </div>
         )
     }

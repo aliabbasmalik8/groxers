@@ -13,8 +13,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import ProductIdex from "./components/products/ProductIndex"
 import Cart from "./components/cart/Cart"
 import CartList from "./components/cartList/CartList"
-
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css'
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -37,6 +36,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
+        <div>
         <Router>
           <div className="App">
             <Route exact path="/" component={Dashboard} />
@@ -51,6 +51,7 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
+        </div>
       </Provider>
     );
   }

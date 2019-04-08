@@ -1,10 +1,6 @@
 .product_index_container{
     background: #fafafa;
     .products_filter_container_parent{
-        display: block;
-        max-width: 1200px;
-        margin: 0 auto;
-        width: 100%;
         margin-top: 25px;
         padding-bottom: 100px;
         .products_filter_container{
@@ -16,23 +12,48 @@
                 width: 25%;
                 .sub_catagory_filter{
                     background: #fff;
-                    border: 1px solid #ddd;
+                    box-shadow: 0px 0px 1px #8c8686;
                     .single_catagory{
                         cursor: pointer;
                         padding: 10px;
                         border-bottom: 1px solid #e4e4e4;
-                        &:hover{
-                            background: #e4e4e4;
-                        }
+                        display: inline-flex;
+                        width: 100%;
+                        align-items: baseline;
                         .content{
-                            text-transform: capitalize;
-                            color: #000;
+                            text-transform: uppercase;
+                            color: #282828;
+                            font-size: 12px;
+                            font-weight: 100;
+                            &:hover{
+                                color: #fc7070;
+                            }
                         }
                     }
                 }
             }
             .products_container{
                 width: 75%;
+                .search_container{
+                    position: relative;
+                    padding: 0 22px 20px;
+                    input{
+                        height: 35.23px;
+                        padding: 2px 17px 2px 35px;
+                        border-radius: 6px;
+                        font-size: 16px;
+                        line-height: 22px;
+                        width: 100%;
+                        border: none;
+                        box-shadow: 0 0px 20px #ddd;
+                    }
+                    .seacr_icon{
+                        left: 31px;
+                        position: absolute;
+                        top: 9px;
+                        color: #bbb;
+                    }
+                }
                 .products_row{
                     margin: 0;
                     padding: 0 10px;
@@ -54,23 +75,37 @@
                                 width: 100%;
                             }
                         }
-                        .items_name{
-                            text-align: center;
-                        }
-                        .price{
-                            display: inline-flex;
-                            justify-content: center;
-                            width: 100%;
-                            .current_price{
-                                margin-right: 10px;
+                        .content{
+                            color: #282828;
+                            font-size: 12px;
+                            text-transform: uppercase;
+                            line-height: 20px;
+                            .items_name{
+                                padding: 0 10px 0;
+                                text-align: center;
                             }
-                            .prev_price{
-                                margin-left: 10px;
+                            .price{
+                                padding: 0 10px 0;
+                                display: inline-flex;
+                                justify-content: center;
+                                width: 100%;
+                                .current_price{
+                                    margin-right: 10px;
+                                }
+                                .prev_price{
+                                    margin-left: 10px;
+                                }
                             }
-                        }
-                        .learn_more{
-                            text-align: center;
-                            cursor: pointer;
+                            .learn_more{
+                                text-align: center;
+                                cursor: pointer;
+                                padding: 10px;
+                                font-weight: 600;
+                                margin-top: 5px;
+                                &:hover{
+                                    box-shadow: 0 0 5px #ddd;
+                                }
+                            }
                         }
                     }
                 }

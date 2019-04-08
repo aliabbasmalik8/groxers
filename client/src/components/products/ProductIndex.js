@@ -64,7 +64,7 @@ class ProductIdex extends Component{
         return(
             <div className="product_index_container">
                 <PageHeader />
-                <div className="products_filter_container_parent">
+                <div className="products_filter_container_parent container">
                     <div className="products_filter_container">
                         <Filter filterProducts={this.filterProducts} catagory={catagory}/>
                         <Products products={this.state.products}/>

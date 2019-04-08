@@ -12,12 +12,16 @@ class ProductInfo extends Component{
         this.addCart = this.addCart.bind(this);
     }
     handleQuantity(num){
-        if((this.state.quantity + num) > 1){
+        if((this.state.quantity + num) >= 1){
             this.setState({quantity: this.state.quantity + num})
         }
     }
     addCart(){
-        const { product } = this.props;
+        const { product, auth } = this.props;
+        if(!auth.isAuthenticated){
+            window.location.href = "/login";
+            return;
+        }
         let cartItem= {
             product: product,
             quantity: this.state.quantity,
@@ -39,9 +43,9 @@ class ProductInfo extends Component{
                     {product && product.name}
                 </div>
                 <div className="sku">SKU#: {product && product.pid}</div>
-                <div className="review">
+                {/* <div className="review">
                     Be the first to review this product       
-                </div>
+                </div> */}
                 <div className="status">{product && product.skus && product.skus[0].out_of_stock ? 'Out Of Stock' : 'In Stock'}</div>
                 <div className="price">
                     <div className="current_price">Price#: {product && product.skus && product.skus[0].price} PK</div>

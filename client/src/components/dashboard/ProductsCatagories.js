@@ -3,7 +3,7 @@ import ProductcatagoryCard from './ProductcatogryCard';
 class ProductsCatagories extends Component{
     render(){
         return(
-            <div className="catagory_cards">
+            <div className="catagory_cards container">
                 <div className="single_row">
                     <ProductcatagoryCard name={'Electronics'} image={'https://www.alfatah.pk/media/catalog/product/cache/1/small_image/250x250/9df78eab33525d08d6e5fb8d27136e95/a/f/afp-000134935_4.png'}/>
                     <ProductcatagoryCard name={"Men's Clothing"} image={'https://d224nth7ac0evy.cloudfront.net/wysiwyg/men-Home-unstitched_2.jpg'}/>

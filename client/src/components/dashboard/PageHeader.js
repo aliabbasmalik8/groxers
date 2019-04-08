@@ -7,8 +7,8 @@ import { getProducts, getCartItems } from './../../api/productApi'
 
 class PageHeader extends Component{
     componentDidMount(){
-        // this.props.products.length === 0 &&
-        //     this.props.getProducts();
+        this.props.products.length === 0 &&
+            this.props.getProducts();
         if(this.props.cart.length === 0){
             let data={
                 sessionId: this.props.auth.user.id,

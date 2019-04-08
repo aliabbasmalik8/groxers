@@ -53,7 +53,7 @@ class SingleCatagory extends Component{
         const { name, filterProducts } = this.props;
         return(
             <div className="single_catagory" onClick={()=>filterProducts(name)}>
-                <div className="content">{name}</div>
+                <div className="content">{''+name}</div>
             </div>
         )
     }
