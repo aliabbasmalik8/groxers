@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../api/authApi";
-import classnames from "classnames";
+import PageHeader from './../dashboard/PageHeader'
 class Register extends Component {
   constructor() {
     super();
@@ -44,93 +44,30 @@ class Register extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
-            <div className="col s12">
-              <h4>
-                <b>Register</b> below
-              </h4>
-              <p className="grey-text text-darken-1">
-                Already have an account? <Link to="/login">Log in</Link>
-              </p>
+      <div>
+        <PageHeader />
+        <div className="container auth_container">
+          <div className="login_title">CREATE NEW CUSTOMER ACCOUNT</div>
+          <div className="auth">            
+            <div className={"error_list " + (Object.keys(errors).length > 0 ? 'error_list_padding' : '')}>
+              <div className="">{errors.name}</div>
+              <div className="">{errors.email}</div>
+              <div className="">{errors.password}</div>
+              <div className="">{errors.password2}</div>
             </div>
-            <form noValidate onSubmit={this.onSubmit}>
-              <div className="input-field col s12">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.name}
-                  error={errors.name}
-                  id="name"
-                  type="text"
-                  className={classnames("", {
-                    invalid: errors.name
-                  })}
-                />
-                <label htmlFor="name">Name</label>
-                <span className="red-text">{errors.name}</span>
-              </div>
-              <div className="input-field col s12">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.email}
-                  error={errors.email}
-                  id="email"
-                  type="email"
-                  className={classnames("", {
-                    invalid: errors.email
-                  })}
-                />
-                <label htmlFor="email">Email</label>
-                <span className="red-text">{errors.email}</span>
-              </div>
-              <div className="input-field col s12">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.password}
-                  error={errors.password}
-                  id="password"
-                  type="password"
-                  className={classnames("", {
-                    invalid: errors.password
-                  })}
-                />
-                <label htmlFor="password">Password</label>
-                <span className="red-text">{errors.password}</span>
-              </div>
-              <div className="input-field col s12">
-                <input
-                  onChange={this.onChange}
-                  value={this.state.password2}
-                  error={errors.password2}
-                  id="password2"
-                  type="password"
-                  className={classnames("", {
-                    invalid: errors.password2
-                  })}
-                />
-                <label htmlFor="password2">Confirm Password</label>
-                <span className="red-text">{errors.password2}</span>
-              </div>
-              <div className="col s12">
-                <button
-                  style={{
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem"
-                  }}
-                  type="submit"
-                  className=""
-                >
-                  Sign up
-                </button>
-              </div>
-            </form>
+            <div className="input_parent">
+              <input onChange={this.onChange} id="name" type="text" value={this.state.name} placeholder="Name"/>
+            </div>
+            <div className="input_parent">
+              <input onChange={this.onChange} id="email" type="email" value={this.state.email} placeholder="Email"/>
+            </div>
+            <div className="input_parent">
+              <input onChange={this.onChange} id="password" type="password" value={this.state.password} placeholder="Password"/>
+            </div>
+            <div className="input_parent">
+              <input onChange={this.onChange} id="password2" type="password" value={this.state.password2} placeholder="Confirm Password"/>
+            </div>
+            <div className="login_btn" onClick={this.onSubmit}>Sign up</div> 
           </div>
         </div>
       </div>

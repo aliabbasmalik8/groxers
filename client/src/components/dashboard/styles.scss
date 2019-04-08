@@ -1,13 +1,16 @@
+body{
+    background: #fafafa !important;
+    background-color: #fafafa !important;
+}
 .page_header{
     .panel_warpper{
         border-bottom: 1px solid #fff;
-        background-color: #fafafa;
         color: #8b8b8b;
         box-sizing: border-box;
         padding: 10px;
         display: flex;
         justify-content: flex-end;
-        font-size: 10px;
+        font-size: 13px;
         align-items: center;
         .create_account{
             padding-right: 10px;
@@ -26,23 +29,23 @@
             
         }
     }
-    .header_wrapper_content{
-        .header_content{
-            padding: 20px;
-            display: inline-flex;
-            width: 100%;
-            justify-content: space-between;
-            background: #efefef;
-            .logo_parent{
-                img{
-                    width: 130px;
-                    height: 50px;
-                }
-            }
-            .cart_image_parent{
-
+    .header_content{
+        padding: 20px;
+        display: inline-flex;
+        width: 100%;
+        justify-content: space-between;
+        background: #fff;
+        .logo_parent{
+            img{
+                width: 130px;
+                height: 50px;
             }
         }
+        .cart_image_parent{
+
+        }
+    }
+    .header_wrapper_content{
         .fixed-nav{
             position: fixed;
             width: 100%;

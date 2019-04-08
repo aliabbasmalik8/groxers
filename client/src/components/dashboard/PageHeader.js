@@ -7,8 +7,8 @@ import { getProducts, getCartItems } from './../../api/productApi'
 
 class PageHeader extends Component{
     componentDidMount(){
-        this.props.products.length === 0 &&
-            this.props.getProducts();
+        // this.props.products.length === 0 &&
+        //     this.props.getProducts();
         if(this.props.cart.length === 0){
             let data={
                 sessionId: this.props.auth.user.id,
@@ -44,15 +44,15 @@ class PageHeader extends Component{
                         </span>
                     }
                 </div>
-                <nav className="header_wrapper_content">
-                    <div className="header_content">
-                        <div className="logo_parent">
-                            <img src="/images/444.png" alt=""/>
-                        </div>
-                        <div className="cart_image_parent">
-                            <img src="" alt=""/>
-                        </div>
+                <div className="header_content">
+                    <div className="logo_parent">
+                        <img src="/images/444.png" alt=""/>
                     </div>
+                    <div className="cart_image_parent">
+                        <img src="" alt=""/>
+                    </div>
+                </div>
+                <nav className="header_wrapper_content">
                     <div className="header_wrapper_bottom">
                         <Link to={"/products/Electronics"}>
                             <div className="inner_header">Electronics</div>
