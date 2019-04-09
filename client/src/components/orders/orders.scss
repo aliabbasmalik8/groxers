@@ -1,0 +1,13 @@
+._banner{
+    ._container{
+        padding-top: 50px;
+        .order_card{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background: #fff;
+            margin-bottom: 10px;
+            border-radius: 7px;
+        }
+    }
+}

@@ -1,42 +1,75 @@
 .cart_list_container{
     .items{
-        color: #707070;
+        color: #202020;
         .header{
             padding: 20px 10px;
-            background: #ddd;
             margin-top: 20px;
-            font-size: 14px;
+            font-size: 24px;
             font-weight: 600;
-            border: .2px solid #707070;
+            background: #eee;
+            border-bottom: 1px solid #ddd;
         }
         .item_banner{
-            padding: 20px 10px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
             border-bottom: 1px solid #ddd;
+            position: relative;
             &:hover{
-                background: #ddd;
-                color: #fff;
+                background: #fff;
             }
             .image_parent{
                 img{
-
+                    width: 100px;
+                    box-shadow: inset 0px 0 4px 0px #ddd;
                 }
             }
             .desc{
                 .name{
-                    color: #202020;
+                    color: #000;
                 }
                 .description{
 
                 }
             }
             .price{
-
+                font-weight: 600;
             }
             .qty{
-
+                font-weight: 600;
             }
             .total{
-
+                font-weight: 600;
+            }
+            .remove{
+                position: absolute;
+                right: 20px;
+                cursor: pointer;
+            }
+        }
+        .grand_total{
+            display: flex;
+            background: #fdf;
+            padding: 8px 40px;
+            font-weight: 400;
+            font-size: 20px;
+            flex-direction: row-reverse;
+        }
+        .checkout_banner{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 40px;
+            .btn1{
+                background: #5aa56b;
+                color: #fff;
+                font-weight: 600;
+                cursor: pointer;
+            }
+            .continue_shopping{
+                cursor: pointer;
+                &:hover{
+                    color: #fc7070;
+                }
             }
         }
     }

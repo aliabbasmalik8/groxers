@@ -1,12 +1,18 @@
 import {
     GET_PRODUCTS,
     ADD_CART,
-    GET_CART_ITEMS
+    GET_CART_ITEMS,
+    REMOVE_CART_ITEM,
+    MAKE_ORDER,
+    GET_ORDERS
 } from "../actions/types";
 const initialState = {
    products: [],
    cart: [],
    total: 0,
+   pendingOrder: [],
+   deliverOrder: [],
+   deliveredOrder: [],
 };
 export default function(state = initialState, action) {
     switch (action.type) {
@@ -24,6 +30,7 @@ export default function(state = initialState, action) {
             })
             if(index !== -1){
                 newCart[index].quantity += cartItems.quantity;
+                newCart[index].total += cartItems.total;
             }else{
                 newCart.push(cartItems);
             }
@@ -46,6 +53,50 @@ export default function(state = initialState, action) {
                 ...state,
                 cart: data,
                 total: total,
+            }
+        case REMOVE_CART_ITEM:
+            newCart = Object.assign([], state.cart);
+            total = state.total;
+            cartItems = action.payload.cartItems;
+            index = newCart.findIndex(obj => {
+                return obj.product.pid === cartItems.product.pid && obj.product.source === cartItems.product.source;
+            })
+            if(index !== -1){
+                newCart.splice(index,1);
+            }
+            total -= cartItems.total;
+            return {
+                ...state,
+                cart: [...newCart],
+                total: total,
+            }
+        case MAKE_ORDER:
+            let pendingOrder = Object.assign([], state.pendingOrder);
+            pendingOrder.push(action.payload)
+            return {
+                ...state,
+                cart: [],
+                pendingOrder: [...pendingOrder],
+            }
+        case GET_ORDERS:
+            pendingOrder = Object.assign([], state.pendingOrder);
+            let deliverOrder = Object.assign([], state.pendingOrder);
+            let deliveredOrder = Object.assign([], state.pendingOrder);
+            action.payload.map(order=>{
+                if(order.status === "makeOrder"){
+                    pendingOrder.push(order);
+                }else if(order.status === "deleverOrder"){
+                    deliverOrder.push(order)
+                }else if(order.status === "deleveredOrder"){
+                    deliveredOrder.push(order);
+                }
+            })
+            return {
+                ...state,
+                cart: [],
+                pendingOrder: [...pendingOrder],
+                deliverOrder: [...deliverOrder],
+                deliveredOrder: [...deliveredOrder]
             }
         default:
             return state;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { addIntoCart } from './../../api/productApi'
 class ProductInfo extends Component{
@@ -56,7 +57,9 @@ class ProductInfo extends Component{
                     <div className="count">{this.state.quantity}</div>
                     <div className="plus" onClick={() => this.handleQuantity(1)}>+</div>
                 </div>
-                <div className="add_cart_btn" onClick={this.addCart}>ADD TO CART</div>
+                <Link to={"/cart"} >
+                    <div className="add_cart_btn" onClick={this.addCart}>ADD TO CART</div>
+                </Link>
             </div>
         )
     }
@@ -67,4 +70,4 @@ ProductInfo.propTypes = {
 const mapStateToProps = state => ({
     auth: state.auth,
 });
-export default connect(mapStateToProps, { addIntoCart })(ProductInfo)
+export default connect(mapStateToProps, { addIntoCart })(withRouter(ProductInfo))

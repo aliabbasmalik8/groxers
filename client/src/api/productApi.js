@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getProductsAction, addCartAction, getCartItemsAction } from './../actions/productAction'
+import { getProductsAction, addCartAction, getCartItemsAction, removeCartItemAction, makeOrderAction, getOrdersAction } from './../actions/productAction'
 
 export const getProducts = userData => dispatch =>{
   axios
@@ -21,10 +21,31 @@ export const addIntoCart = cart => dispatch =>{
       dispatch(addCartAction(cart))
     })
 };
+export const removeCartItem = cart => dispatch =>{
+  axios
+    .post("/api/cart/delete", cart)
+    .then(res =>{
+      dispatch(removeCartItemAction(cart))
+    })
+};
 export const getCartItems = data => dispatch =>{
   axios
     .post("/api/cart/getCartItems", data)
     .then(res =>{
       dispatch(getCartItemsAction(res.data))
+    })
+};
+export const makeOrder = data => dispatch =>{
+  axios
+    .post("/api/cart/makeOrder", data)
+    .then(res =>{
+      dispatch(makeOrderAction(data))
+    })
+};
+export const getOrders = data => dispatch =>{
+  axios
+    .post("/api/cart/getOrders", data)
+    .then(res =>{
+      dispatch(getOrdersAction(res.data))
     })
 };

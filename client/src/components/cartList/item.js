@@ -1,5 +1,20 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from "prop-types";
+import { removeCartItem } from './../../api/productApi'
 class Item extends Component{
+    constructor(props){
+        super(props);
+        this.removeItem = this.removeItem.bind(this);
+    }
+    removeItem(){
+        const { item } = this.props;
+        let data = {
+            sessionId: this.props.auth.user.id,
+            cartItems: item,
+        }
+        this.props.removeCartItem(data);
+    }
     render(){
         const { item } = this.props;
         return(
@@ -24,8 +39,17 @@ class Item extends Component{
                 <div className="total col-1">
                     {item.total}
                 </div>
+                <div className="remove" onClick={this.removeItem}>
+                    <img src="/images/trash.png" alt="trash"/>
+                </div>
             </div>
         )
     }
 }
-export default Item;
+Item.propTypes = {
+    removeCartItem: PropTypes.func.isRequired,
+};
+const mapStateToProps = state => ({
+    auth: state.auth,
+});
+export default connect(mapStateToProps, { removeCartItem })(Item);

@@ -13,6 +13,8 @@ import Dashboard from "./components/dashboard/Dashboard";
 import ProductIdex from "./components/products/ProductIndex"
 import Cart from "./components/cart/Cart"
 import CartList from "./components/cartList/CartList"
+import Checkout from './components/checkout/Checkout'
+import Orders from './components/orders/Orders'
 import 'bootstrap/dist/css/bootstrap.css'
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -43,10 +45,12 @@ class App extends Component {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/products" component={ProductIdex} />
-            <Route exact path="/cart" component={CartList} />
             <Route path="/products/:productCatagory" component={ProductIdex}  />
             <Route exact path="/cart/:source/:id" component={Cart} />
+            <Route exact path="/checkout/address" component={Checkout} />
+            <Route exact path="/orders" component={Orders} />
             <Switch>
+              <PrivateRoute exact path="/cart" component={CartList} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
           </div>
