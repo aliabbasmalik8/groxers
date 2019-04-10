@@ -5,7 +5,8 @@ import {
     GET_CART_ITEMS,
     REMOVE_CART_ITEM,
     MAKE_ORDER,
-    GET_ORDERS
+    GET_ORDERS,
+    GET_ALL_ORDERS
   } from "./types";
   
 export function getProductsAction(payload){
@@ -47,6 +48,12 @@ export function makeOrderAction(payload){
 export function getOrdersAction(payload){
   return {
       type: GET_ORDERS,
+      payload,
+  }
+};
+export function getAllOrdersAction(payload){
+  return {
+      type: GET_ALL_ORDERS,
       payload,
   }
 };

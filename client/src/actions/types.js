@@ -8,3 +8,5 @@ export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM";
 export const GET_CART_ITEMS = "GET_CART_ITEMS";
 export const MAKE_ORDER = "MAKE_ORDER";
 export const GET_ORDERS = "GET_ORDERS";
+export const GET_ALL_ORDERS = "GET_ALL_ORDERS";
+export const GET_ALL_USERS = "GET_ALL_USERS";

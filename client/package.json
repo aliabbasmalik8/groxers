@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@trendmicro/react-sidenav": "^0.4.5",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "jquery": "^1.9.1",
@@ -18,11 +19,13 @@
     "react-redux-toastr": "^7.4.8",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-sidenav": "^3.1.9",
     "react-slick": "^0.23.2",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^3.4.10",
     "typescript": "^3.4.1"
   },
   "scripts": {

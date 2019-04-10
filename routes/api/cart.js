@@ -67,7 +67,33 @@ router.post("/makeOrder", (req, res) => {
         .then(item => {
             if (item) {
                 item
-                    .updateOne({$set: {"status":'makeOrder', "address": req.body.address}})
+                    .updateOne({$set: {"status":'makeOrder', "address": req.body.address, "orderTime": Date.now}})
+                    .then(cart =>res.json(cart))
+                    .catch(err => console.log(err))
+
+            }
+        });
+})
+router.post("/deliverOrder", (req, res) => {
+    Cart
+        .findOne({ $and: [ { sessionId: req.body.sessionId }, { status: 'makeOrder' } ] })
+        .then(item => {
+            if (item) {
+                item
+                    .updateOne({$set: {"status":'deleverOrder',"deliverTime": Date.now}})
+                    .then(cart =>res.json(cart))
+                    .catch(err => console.log(err))
+
+            }
+        });
+})
+router.post("/completeOrder", (req, res) => {
+    Cart
+        .findOne({ $and: [ { sessionId: req.body.sessionId }, { status: 'deleverOrder' } ] })
+        .then(item => {
+            if (item) {
+                item
+                    .updateOne({$set: {"status":'deleveredOrder',"reachTime": Date.now}})
                     .then(cart =>res.json(cart))
                     .catch(err => console.log(err))
 

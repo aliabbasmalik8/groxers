@@ -83,5 +83,10 @@ router.post("/login", (req, res) => {
       });
     });
 });
-
+router.get('/', (req,res)=>{
+  User
+    .find()
+    .then(users => res.send(users))
+    .catch(err => console.log(err))
+})
 module.exports = router;

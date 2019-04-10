@@ -22,6 +22,18 @@ const CartSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  orderTime:{
+    type: Date,
+    default: Date.now,
+  },
+  deliverTime:{
+    type: Date,
+    default: Date.now,
+  },
+  reachTime:{
+    type: Date,
+    default: Date.now,
+  },
   address:{type: Object}
 });
 module.exports = Cart = mongoose.model("carts", CartSchema);

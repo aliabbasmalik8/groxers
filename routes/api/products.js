@@ -30,6 +30,7 @@ router.post("/update", (req, res) => {
 router.get("/getAll", (req, res) =>{
     Product
         .find()
+        .limit(1000)
         .then(products => res.send(products))
         .catch(err => console.log(err))
 })

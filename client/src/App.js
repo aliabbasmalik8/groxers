@@ -15,6 +15,7 @@ import Cart from "./components/cart/Cart"
 import CartList from "./components/cartList/CartList"
 import Checkout from './components/checkout/Checkout'
 import Orders from './components/orders/Orders'
+import AdminDashboard from './components/admin/Dashboard'
 import 'bootstrap/dist/css/bootstrap.css'
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -52,6 +53,7 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/cart" component={CartList} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/admin/dashboard" component={AdminDashboard} />
             </Switch>
           </div>
         </Router>

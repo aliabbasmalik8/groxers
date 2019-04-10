@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getProductsAction, addCartAction, getCartItemsAction, removeCartItemAction, makeOrderAction, getOrdersAction } from './../actions/productAction'
+import { getProductsAction, addCartAction, getCartItemsAction, removeCartItemAction, makeOrderAction, getOrdersAction, getAllOrdersAction } from './../actions/productAction'
 
 export const getProducts = userData => dispatch =>{
   axios
@@ -47,5 +47,12 @@ export const getOrders = data => dispatch =>{
     .post("/api/cart/getOrders", data)
     .then(res =>{
       dispatch(getOrdersAction(res.data))
+    })
+};
+export const getAllOrders = () => dispatch =>{
+  axios
+    .get("/api/cart/get")
+    .then(res =>{
+      dispatch(getAllOrdersAction(res.data))
     })
 };
