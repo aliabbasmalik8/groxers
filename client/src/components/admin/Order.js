@@ -4,7 +4,8 @@ class Order extends Component{
         const { order } = this.props;
         return(
             <div className="order_banner">
-                
+                <div className="user_info_part">
+                </div>
             </div>
         )
     }
