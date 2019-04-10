@@ -4,7 +4,7 @@ class PendingOrder extends Component{
     render(){
         const { orders } = this.props;
         return(
-            <div className="orders_banner">
+            <div className="orders_banner container">
                 {
                     orders.map((order, index)=>{
                         return <Order key={'order-'+index} order={order} />
