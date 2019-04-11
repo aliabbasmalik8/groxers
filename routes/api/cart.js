@@ -67,7 +67,7 @@ router.post("/makeOrder", (req, res) => {
         .then(item => {
             if (item) {
                 item
-                    .updateOne({$set: {"status":'makeOrder', "address": req.body.address, "orderTime": Date.now}})
+                    .updateOne({$set: {"status":'makeOrder', "address": req.body.address}})
                     .then(cart =>res.json(cart))
                     .catch(err => console.log(err))
 
@@ -76,11 +76,11 @@ router.post("/makeOrder", (req, res) => {
 })
 router.post("/deliverOrder", (req, res) => {
     Cart
-        .findOne({ $and: [ { sessionId: req.body.sessionId }, { status: 'makeOrder' } ] })
+        .findById(req.body._id)
         .then(item => {
             if (item) {
                 item
-                    .updateOne({$set: {"status":'deleverOrder',"deliverTime": Date.now}})
+                    .updateOne({$set: {"status":'deleverOrder'}})
                     .then(cart =>res.json(cart))
                     .catch(err => console.log(err))
 
@@ -93,16 +93,28 @@ router.post("/completeOrder", (req, res) => {
         .then(item => {
             if (item) {
                 item
-                    .updateOne({$set: {"status":'deleveredOrder',"reachTime": Date.now}})
+                    .updateOne({$set: {"status":'completeOrder'}})
                     .then(cart =>res.json(cart))
                     .catch(err => console.log(err))
 
             }
         });
 })
-router.get("/get", (req,res) => {
+router.get("/pendingOrders", (req,res) => {
     Cart
-        .find()
+        .find({ status: 'makeOrder' })
+        .then(carts => res.send(carts))
+        .catch(err => console.log(err))
+})
+router.get("/deliverOrders", (req,res) => {
+    Cart
+        .find({ status: 'deleverOrder' })
+        .then(carts => res.send(carts))
+        .catch(err => console.log(err))
+})
+router.get("/completedOrders", (req,res) => {
+    Cart
+        .find({ status: 'completeOrder' })
         .then(carts => res.send(carts))
         .catch(err => console.log(err))
 })
@@ -114,7 +126,7 @@ router.post("/getCartItems", (req,res) => {
 })
 router.post("/getOrders", (req,res) => {
     Cart
-        .find({ $and: [ { sessionId: req.body.sessionId }, { $or: [ { status:  'makeOrder'}, { status:  'deleverOrder'}, { status:  'deleveredOrder'} ] } ] })
+        .find({ $and: [ { sessionId: req.body.sessionId }, { status:  'makeOrder'}, { status:  'deleverOrder'}, { status:  'completeOrder'} ]})
         .then(cart => res.send(cart))
         .catch(err => console.log(err))
 })

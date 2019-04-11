@@ -87,7 +87,7 @@ export default function(state = initialState, action) {
                     pendingOrder.push(order);
                 }else if(order.status === "deleverOrder"){
                     deliverOrder.push(order)
-                }else if(order.status === "deleveredOrder"){
+                }else if(order.status === "completeOrder"){
                     deliveredOrder.push(order);
                 }
             })

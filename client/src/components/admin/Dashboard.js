@@ -46,7 +46,7 @@ class AdminDashboard extends Component{
                                 <i className="fab fa-jedi-order" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
                             <NavText>
-                                Charts
+                                PENDING ORDERS
                             </NavText>
                         </NavItem>
                         <NavItem eventKey="deliver-order">
@@ -54,7 +54,7 @@ class AdminDashboard extends Component{
                                 <i className="fab fa-first-order" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
                             <NavText>
-                                Charts
+                                DELIVERED ORDERS
                             </NavText>
                         </NavItem>
                         <NavItem eventKey="fullfil-order">
@@ -62,7 +62,7 @@ class AdminDashboard extends Component{
                                 <i className="fab fa-first-order-alt" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
                             <NavText>
-                                Charts
+                                FULLFIL ORDERS
                             </NavText>
                         </NavItem>
                     </SideNav.Nav>

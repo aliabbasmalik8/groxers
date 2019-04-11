@@ -1,10 +1,109 @@
 .admin_dashbord_banner{
     .orders_banner{
+        padding-bottom: 20px;
+        padding-left: 64px;
         .order_banner{
-            width: 600px;
+            width: 90%;
             background: #fff;
             border-radius: 10px;
-            margin: 20px 0;
+            margin: 15px auto;
+            padding: 10px;
+            .user_info_part{
+                font-size: 14px;
+                font-weight: 100;
+                color: #282828;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ddd;
+                .user_info{
+                    font-size: 20px;
+                    text-align: center;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                }
+                .info_row{
+                    display: inline-flex;
+                    justify-content: space-around;
+                    width: 100%;
+                    .info_col{
+                        display: inline-flex;
+                        width: 50%;
+                        padding-left: 20px;
+                        .title{
+                            margin-right: 20px;
+                            font-weight: 600;
+                            width: 63px;
+                        }
+                    }
+                }
+            }
+            .items{
+                padding: 10px 0;
+                border-bottom: 1px solid #ddd;
+                .single_item{
+                    display: inline-flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    padding: 5px 0;
+                    color: #282828;
+                    &:hover{
+                        color: #fd7070;
+                        text-decoration: none;
+                    }
+                    .header{
+                        font-weight: 600;
+                        &:hover{
+                            color: #282828 !important;
+                        }
+                    }
+                    .pid{
+                        width: 15%;
+                        cursor: pointer;
+                    }
+                    .name{
+                        width: 42%
+                    }
+                    .source{
+                        width: 10%;
+                    }
+                    .price{
+                        width: 10%;
+                    }
+                    .quantity{
+                        width: 12%;
+                    }
+                    .total{
+                        width: 11%;
+                    }
+                }
+            }
+            .order_footer{
+                display: inline-flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 10px;
+                .order_btn_parent{
+                    width: 76%;
+                    .btn{
+                        background: #d87474;
+                        color: #fff;
+                        font-weight: 600;
+                        cursor: pointer;
+                        &:hover{
+                            background: #cf7a7a
+                        }
+                    }
+                }
+                .quantity{
+                    width: 13%;
+                }
+                .grand_total{
+                    width: 11%;
+                }
+            }
         }
     }
+}
+.sidenav---sidenav---_2tBP{
+    position: fixed;
+    background: #525252;
 }

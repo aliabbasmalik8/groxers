@@ -5,8 +5,11 @@ import {
     GET_CART_ITEMS,
     REMOVE_CART_ITEM,
     MAKE_ORDER,
+    DELIVER_ORDER,
     GET_ORDERS,
-    GET_ALL_ORDERS
+    GET_ALL_ORDERS,
+    ADMIN_DELIVER_ORDERS,
+    ADMIN_COMPLETED_ORDERS
   } from "./types";
   
 export function getProductsAction(payload){
@@ -45,6 +48,12 @@ export function makeOrderAction(payload){
       payload,
   }
 };
+export function deliverOrderAction(payload){
+  return {
+    type: DELIVER_ORDER,
+    payload,
+  }
+}
 export function getOrdersAction(payload){
   return {
       type: GET_ORDERS,
@@ -54,6 +63,18 @@ export function getOrdersAction(payload){
 export function getAllOrdersAction(payload){
   return {
       type: GET_ALL_ORDERS,
+      payload,
+  }
+};
+export function getAdminAllDeliverOrdersAction(payload){
+  return {
+      type: ADMIN_DELIVER_ORDERS,
+      payload,
+  }
+};
+export function getAdminAllCompletedOrdersAction(payload){
+  return {
+      type: ADMIN_COMPLETED_ORDERS,
       payload,
   }
 };

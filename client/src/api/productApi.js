@@ -1,5 +1,6 @@
 import axios from "axios";
-import { getProductsAction, addCartAction, getCartItemsAction, removeCartItemAction, makeOrderAction, getOrdersAction, getAllOrdersAction } from './../actions/productAction'
+import { getProductsAction, addCartAction, getCartItemsAction, removeCartItemAction, makeOrderAction, getOrdersAction,
+       getAllOrdersAction, deliverOrderAction, getAdminAllDeliverOrdersAction, getAdminAllCompletedOrdersAction } from './../actions/productAction'
 
 export const getProducts = userData => dispatch =>{
   axios
@@ -42,6 +43,13 @@ export const makeOrder = data => dispatch =>{
       dispatch(makeOrderAction(data))
     })
 };
+export const deliverOrder = (data, order) => dispatch =>{
+  axios
+    .post("/api/cart/deliverOrder", data)
+    .then(res =>{
+      dispatch(deliverOrderAction(order))
+    })
+};
 export const getOrders = data => dispatch =>{
   axios
     .post("/api/cart/getOrders", data)
@@ -51,8 +59,22 @@ export const getOrders = data => dispatch =>{
 };
 export const getAllOrders = () => dispatch =>{
   axios
-    .get("/api/cart/get")
+    .get("/api/cart/pendingOrders")
     .then(res =>{
       dispatch(getAllOrdersAction(res.data))
+    })
+};
+export const getAdminAllDeliverOrders = () => dispatch =>{
+  axios
+    .get("/api/cart/deliverOrders")
+    .then(res =>{
+      dispatch(getAdminAllDeliverOrdersAction(res.data))
+    })
+};
+export const getAdminAllCompletedOrders = () => dispatch =>{
+  axios
+    .get("/api/cart/completedOrders")
+    .then(res =>{
+      dispatch(getAdminAllCompletedOrdersAction(res.data))
     })
 };
