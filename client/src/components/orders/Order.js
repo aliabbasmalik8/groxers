@@ -23,7 +23,7 @@ class Order extends Component{
                     <div className="parent_class id">
                         <div className="title">Total Items</div> 
                         <div className="content">
-                            {order.cartItems.length}
+                            {order.cartItems && order.cartItems.length}
                         </div>
                     </div>
                     <div className="parent_class total">
