@@ -17,6 +17,7 @@ class Address extends Component{
         this.setState({ [e.target.id]: e.target.value })
     };
     onSubmit = e => {
+        const { streetAddress, city, zip, phone } = this.state;
         let address={
             streetAddress: this.state.streetAddress,
             city: this.state.city,
@@ -27,9 +28,12 @@ class Address extends Component{
             address: address,
             sessionId: this.props.auth.user.id,
         }
-        this.props.makeOrder(data);
+        if(streetAddress !== "" && city !== "" && zip !== "" && phone !== ""){
+            this.props.makeOrder(data);
+        }
     };
     render(){
+        const { streetAddress, city, zip, phone } = this.state;
         return(
             <div className="address_banner_top col-8">
                 <div className="title">ADDRESS</div>
@@ -46,9 +50,13 @@ class Address extends Component{
                     <div className="input_parent">
                         <input onChange={this.onChange} id="phone" type="text" value={this.state.email} placeholder="Phone Number"/>
                     </div>
-                    <Link to={"/orders"} >
+                    {
+                        streetAddress !== "" && city !== "" && zip !== "" && phone !== "" &&
+                        <Link to={"/orders"} >
+                            <div className="save_order" onClick={this.onSubmit}>Save Order</div>
+                        </Link> ||
                         <div className="save_order" onClick={this.onSubmit}>Save Order</div>
-                    </Link>
+                    }
                 </div>
             </div>
         )

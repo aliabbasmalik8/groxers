@@ -2,12 +2,52 @@
     ._container{
         padding-top: 50px;
         .order_card{
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 20px;
-            background: #fff;
             margin-bottom: 10px;
-            border-radius: 7px;
+            background: #fff;
+            padding-bottom: 20px;
+            border: 1px solid #ddd;
+            .upper_div{
+                border-bottom: 1px solid #ddd;
+                padding: 10px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                border-radius: 7px;
+                .order_complete{
+                    background: #fc7070;
+                    color: #fff;
+                    font-weight: 600;
+
+                }
+                .parent_class{
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .title{
+                    margin-right: 10px;
+                }
+            }
+            .items{
+                .title{
+                    margin: 10px 0;
+                }
+                .single_item{
+                    display: flex;
+                    justify-content: space-between;
+                    .name{
+                        width: 46%;
+                    }
+                    .price{
+                        width: 18%;                        
+                    }
+                    .quantity{
+                        width: 18%;                        
+                    }
+                    .total{
+                        width: 18%;
+                    }
+                }
+            }
         }
     }
 }

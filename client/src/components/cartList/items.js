@@ -18,9 +18,12 @@ class Items extends Component{
                     <Link to={"/"}>
                         <div className="btn continue_shopping">CONTINUE SHOPPING</div>
                     </Link>
-                    <Link to={"/checkout/address"}>
-                        <div className="btn btn1">CHECKOUT</div>
-                    </Link>
+                    {
+                        cart.length > 0 &&
+                            <Link to={"/checkout/address"}>
+                                <div className="btn btn1">CHECKOUT</div>
+                            </Link>
+                    }
                 </div>
             </div>
         )

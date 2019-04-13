@@ -89,7 +89,7 @@ router.post("/deliverOrder", (req, res) => {
 })
 router.post("/completeOrder", (req, res) => {
     Cart
-        .findOne({ $and: [ { sessionId: req.body.sessionId }, { status: 'deleverOrder' } ] })
+        .findById(req.body._id)
         .then(item => {
             if (item) {
                 item
@@ -126,7 +126,7 @@ router.post("/getCartItems", (req,res) => {
 })
 router.post("/getOrders", (req,res) => {
     Cart
-        .find({ $and: [ { sessionId: req.body.sessionId }, { status:  'makeOrder'}, { status:  'deleverOrder'}, { status:  'completeOrder'} ]})
+        .find({ $and: [ { sessionId: req.body.sessionId }]})
         .then(cart => res.send(cart))
         .catch(err => console.log(err))
 })

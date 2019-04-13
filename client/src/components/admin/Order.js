@@ -58,9 +58,12 @@ class Order extends Component{
                     }
                 </div>
                 <div className="order_footer">
-                    <div className="order_btn_parent">
-                        <div className="btn" onClick={this._deliverOrder}>DELIVER ORDER</div>
-                    </div>
+                    {
+                        order.status === "makeOrder" &&
+                        <div className="order_btn_parent">
+                            <div className="btn" onClick={this._deliverOrder}>DELIVER ORDER</div>
+                        </div>
+                    }
                     <div className="quantity"></div>
                     <div className="grand_total">{order.total}</div>
                 </div>

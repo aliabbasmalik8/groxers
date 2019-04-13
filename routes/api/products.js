@@ -30,7 +30,14 @@ router.post("/update", (req, res) => {
 router.get("/getAll", (req, res) =>{
     Product
         .find()
-        .limit(100)
+        .then(products => res.send(products))
+        .catch(err => console.log(err))
+})
+router.post("/catagory", (req, res) =>{
+    Product
+        .find({ "category": { "$all": [req.body.catagory, req.body.subcatagory] } })
+        .skip(req.body.offset*40)
+        .limit(40)
         .then(products => res.send(products))
         .catch(err => console.log(err))
 })

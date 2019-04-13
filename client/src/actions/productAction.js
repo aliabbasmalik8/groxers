@@ -9,7 +9,8 @@ import {
     GET_ORDERS,
     GET_ALL_ORDERS,
     ADMIN_DELIVER_ORDERS,
-    ADMIN_COMPLETED_ORDERS
+    ADMIN_COMPLETED_ORDERS,
+    COMPLETE_ORDER
   } from "./types";
   
 export function getProductsAction(payload){
@@ -51,6 +52,12 @@ export function makeOrderAction(payload){
 export function deliverOrderAction(payload){
   return {
     type: DELIVER_ORDER,
+    payload,
+  }
+}
+export function completeOrderAction(payload){
+  return {
+    type: COMPLETE_ORDER,
     payload,
   }
 }

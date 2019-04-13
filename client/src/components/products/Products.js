@@ -1,24 +1,31 @@
 import React, { Component } from 'react'
+import PropTypes from "prop-types";
+import { connect } from 'react-redux'
 import Product from './Product'
+import { getProductsWithCatagory } from './../../api/productApi'
+import Pagination from "react-js-pagination";
 class Products extends Component{
     constructor(props){
         super(props);
         this.state={
             products: [],
+            hasMore: true,
         }
         this.filterList = this.filterList.bind(this);
+        this.getProducts = this.getProducts.bind(this);
     }
     componentDidMount(){
         let { products } = this.props;
         this.setState({
             products: products
         })
+        this.getProducts(1);
     }
     componentDidUpdate(prevProps){
         if(prevProps.products !== this.props.products){
             let { products } = this.props;
             this.setState({
-                products: products
+                products: products,
             })
         }
     }
@@ -32,6 +39,15 @@ class Products extends Component{
             this.setState({products: updatedList});
         }
     }
+    getProducts(page){
+        const { catagory, subCatagory } = this.props;
+        let data ={
+            catagory: catagory,
+            subcatagory: subCatagory,
+            offset: page,
+        }
+        this.props.getProductsWithCatagory(data);
+    }
     render(){
         const { products } = this.state;
         return(
@@ -40,43 +56,53 @@ class Products extends Component{
                     <input type="text" placeholder="Search" className="input_contral" onChange={(e) => this.filterList(e)}/>
                     <i href="#" className="fa fa-search btn-search seacr_icon"></i>
                 </div>
-                <div className="row products_row">
-                    <div className="col-4">
-                        {
-                            products.map((product,index)=>{
-                                if((index+1)%3 ===1){
-                                    return <Product key={index} product={product}/>
-                                }else{
-                                    return null;
-                                }
-                            })
-                        }
-                    </div>
-                    <div className="col-4">
-                        {
+                    <div className="row products_row">
+                        <div className="col-4">
+                            {
                                 products.map((product,index)=>{
-                                if((index+1)%3 ===2){
-                                    return <Product key={index} product={product}/>
-                                }else{
-                                    return null;
-                                }
-                            })
-                        }
+                                    if((index+1)%3 ===1){
+                                        return <Product key={index} product={product}/>
+                                    }else{
+                                        return null;
+                                    }
+                                })
+                            }
+                        </div>
+                        <div className="col-4">
+                            {
+                                    products.map((product,index)=>{
+                                    if((index+1)%3 ===2){
+                                        return <Product key={index} product={product}/>
+                                    }else{
+                                        return null;
+                                    }
+                                })
+                            }
+                        </div>
+                        <div className="col-4">
+                            {
+                                    products.map((product,index)=>{
+                                    if((index+1)%3 ===0){
+                                        return <Product key={index} product={product}/>
+                                    }else{
+                                        return null;
+                                    }
+                                })
+                            }
+                        </div>
                     </div>
-                    <div className="col-4">
-                        {
-                                products.map((product,index)=>{
-                                if((index+1)%3 ===0){
-                                    return <Product key={index} product={product}/>
-                                }else{
-                                    return null;
-                                }
-                            })
-                        }
-                    </div>
-                </div>
+                    <Pagination
+                        activePage={1}
+                        itemsCountPerPage={10}
+                        totalItemsCount={450}
+                        pageRangeDisplayed={5}
+                        onChange={this.getProducts}
+                    />
             </div>
         )
     }
 }
-export default Products
+Products.propTypes = {
+    getProductsWithCatagory: PropTypes.func.isRequired,
+};
+export default connect(null, {getProductsWithCatagory})(Products)

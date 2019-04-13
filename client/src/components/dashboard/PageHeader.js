@@ -7,8 +7,8 @@ import { getProducts, getCartItems } from './../../api/productApi'
 
 class PageHeader extends Component{
     componentDidMount(){
-        this.props.products.length === 0 &&
-            this.props.getProducts();
+        // this.props.products.length === 0 &&
+        //     this.props.getProducts();
         if(this.props.cart.length === 0){
             let data={
                 sessionId: this.props.auth.user.id,
@@ -27,7 +27,7 @@ class PageHeader extends Component{
         this.props.logoutUser();
     }
     render(){
-        // const { cart, total } = this.props;
+        const { cart, total } = this.props;
         return(
             <div className="page_header">
                 <div className="panel_warpper">
@@ -54,7 +54,7 @@ class PageHeader extends Component{
                 </div>
                 <nav className="header_wrapper_content">
                     <div className="header_wrapper_bottom">
-                        <Link to={"/products/Electronics"}>
+                        {/*<Link to={"/products/Electronics"}>
                             <div className="inner_header">Electronics</div>
                         </Link>
                         <Link to={"/products/Men's Clothing"}>
@@ -86,14 +86,14 @@ class PageHeader extends Component{
                         </Link>
                         <Link to={"/products/Pet Food"}>
                             <div className="inner_header">Pet Food</div>
-                        </Link>
+                        </Link> */}
                         
-                        {/* <Link to={"/cart"}>
+                        <Link to={"/cart"}>
                             <div>
                                 <i className="fas fa-cart-plus"></i>&nbsp;
                                 {'Cart: ('+cart.length+') ' + total + ' PK'}
                             </div>
-                        </Link> */}
+                        </Link>
                     </div>
                 </nav>
             </div>

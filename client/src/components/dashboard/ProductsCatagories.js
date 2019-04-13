@@ -22,6 +22,7 @@ class ProductsCatagories extends Component{
                 <div className="single_row">
                     <ProductcatagoryCard name={'Baby Care'} image={'https://www.alfatah.pk/media/catalog/product/cache/1/small_image/250x250/9df78eab33525d08d6e5fb8d27136e95/a/f/afp-000113797.png'}/>
                     <ProductcatagoryCard name={'Pet Food'} image={'https://www.alfatah.pk/media/catalog/product/cache/1/small_image/250x250/9df78eab33525d08d6e5fb8d27136e95/a/f/afp-000106169_1.png'}/>
+                    <ProductcatagoryCard name={'Miscellaneous'} image={'https://www.alfatah.pk/media/catalog/product/cache/1/small_image/250x250/9df78eab33525d08d6e5fb8d27136e95/a/f/afp-000106169_1.png'}/>
                 </div>
             </div>
         )

@@ -1,10 +1,17 @@
 import axios from "axios";
 import { getProductsAction, addCartAction, getCartItemsAction, removeCartItemAction, makeOrderAction, getOrdersAction,
-       getAllOrdersAction, deliverOrderAction, getAdminAllDeliverOrdersAction, getAdminAllCompletedOrdersAction } from './../actions/productAction'
+       getAllOrdersAction, deliverOrderAction, getAdminAllDeliverOrdersAction, getAdminAllCompletedOrdersAction, completeOrderAction } from './../actions/productAction'
 
 export const getProducts = userData => dispatch =>{
   axios
     .get("/api/products/getAll")
+    .then(res =>{
+        dispatch(getProductsAction(res.data))
+    })
+};
+export const getProductsWithCatagory = data => dispatch =>{
+  axios
+    .post("/api/products/catagory", data)
     .then(res =>{
         dispatch(getProductsAction(res.data))
     })
@@ -48,6 +55,13 @@ export const deliverOrder = (data, order) => dispatch =>{
     .post("/api/cart/deliverOrder", data)
     .then(res =>{
       dispatch(deliverOrderAction(order))
+    })
+};
+export const completeOrder = (data) => dispatch =>{
+  axios
+    .post("/api/cart/completeOrder", data)
+    .then(res =>{
+      dispatch(completeOrderAction(res.data))
     })
 };
 export const getOrders = data => dispatch =>{

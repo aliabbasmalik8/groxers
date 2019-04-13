@@ -4,12 +4,15 @@ import Filter from './Filter'
 import Products from './Products'
 import PageHeader from './../dashboard/PageHeader'
 import Footer from './../dashboard/Footer';
+import { main_to_sub_category_map } from './constants'
 import './products.scss'
 class ProductIdex extends Component{
     constructor(props){
         super(props);
+        let catagory = this.props.match.params.productCatagory;
         this.state={
             products:[],
+            subCatagory: main_to_sub_category_map[catagory][0],
         }
         this.filterProducts = this.filterProducts.bind(this);
     }
@@ -25,7 +28,9 @@ class ProductIdex extends Component{
                 return null;
             }
         })
-        this.setState({products: [...filterProducts]})
+        this.setState({
+            products: [...filterProducts],
+        })
     }
     componentDidUpdate(prevProps){
         if(prevProps.products !== this.props.products){
@@ -56,7 +61,8 @@ class ProductIdex extends Component{
             }
         })
         this.setState({
-            products: filterProducts
+            products: filterProducts,
+            subCatagory: subCatagories,
         })
     }
     render(){
@@ -67,7 +73,7 @@ class ProductIdex extends Component{
                 <div className="products_filter_container_parent container">
                     <div className="products_filter_container">
                         <Filter filterProducts={this.filterProducts} catagory={catagory}/>
-                        <Products products={this.state.products}/>
+                        <Products products={this.state.products} catagory={catagory} subCatagory={this.state.subCatagory}/>
                     </div>
                 </div>
                 <Footer />

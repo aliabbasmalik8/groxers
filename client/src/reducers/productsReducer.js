@@ -4,7 +4,8 @@ import {
     GET_CART_ITEMS,
     REMOVE_CART_ITEM,
     MAKE_ORDER,
-    GET_ORDERS
+    GET_ORDERS,
+    COMPLETE_ORDER
 } from "../actions/types";
 const initialState = {
    products: [],
@@ -98,6 +99,8 @@ export default function(state = initialState, action) {
                 deliverOrder: [...deliverOrder],
                 deliveredOrder: [...deliveredOrder]
             }
+        case COMPLETE_ORDER:
+            return state;
         default:
             return state;
     }
