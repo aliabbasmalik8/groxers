@@ -47,8 +47,8 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/products" component={ProductIdex} />
             <Route path="/products/:productCatagory" component={ProductIdex}  />
+            <Route exact path="/cart/:source/:id" component={Cart} />
             <Switch>
-              <PrivateRoute exact path="/cart/:source/:id" component={Cart} />
               <PrivateRoute exact path="/checkout/address" component={Checkout} />
               <PrivateRoute exact path="/orders" component={Orders} />
               <PrivateRoute exact path="/cart" component={CartList} />

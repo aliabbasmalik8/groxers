@@ -17,7 +17,7 @@ class Product extends Component{
                             <div className="current_price">{'PKR ' + product.skus[0].price}</div>
                             <div className="prev_price"></div>
                         </div>
-                        <div className="learn_more">Add to cart</div>
+                        <div className="learn_more">Product Detail</div>
                     </div>
                  </Link>
             </div>
