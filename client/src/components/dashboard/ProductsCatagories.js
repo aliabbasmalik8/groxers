@@ -6,7 +6,7 @@ class ProductsCatagories extends Component{
             <div className="catagory_cards container">
                 <div className="single_row">
                     <ProductcatagoryCard name={'Electronics'} image={'https://www.alfatah.pk/media/catalog/product/cache/1/small_image/250x250/9df78eab33525d08d6e5fb8d27136e95/a/f/afp-000134935_4.png'}/>
-                    <ProductcatagoryCard name={"Men's Clothing"} image={'https://d224nth7ac0evy.cloudfront.net/wysiwyg/men-Home-unstitched_2.jpg'}/>
+                    <ProductcatagoryCard name={"Men's Clothing"} image={'https://d224nth7ac0evy.cloudfront.net/wysiwyg/men-Home-unstitched_2_5cdfeed8f7c4db415cc0cb669f4da3ae.jpg'}/>
                     <ProductcatagoryCard name={"Women's Clothing"} image={'https://d224nth7ac0evy.cloudfront.net/wysiwyg/lawn-collection-cat.jpg'}/>
                 </div>
                 <div className="single_row">

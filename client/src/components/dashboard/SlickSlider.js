@@ -13,16 +13,13 @@ class SlickSlider extends Component{
             <div className="slider_container">
                 <Slider {...settings}>
                 <div>
-                    <img src="https://d224nth7ac0evy.cloudfront.net/codazon/slideshow/cache/1900x600/1/9/1900x600.jpg" alt=""/>
+                    <img src="//cdn.shopify.com/s/files/1/0091/1143/7412/files/Mainslider-Desktop-Prints03_1771x800_crop_center.jpg?v=1553860374" alt=""/>
                 </div>
                 <div>
-                    <img src="https://d224nth7ac0evy.cloudfront.net/codazon/slideshow/cache/1900x600/1/9/1900x600.jpg" alt=""/>
+                    <img src="//cdn.shopify.com/s/files/1/0091/1143/7412/files/Mainslider-Desktop-Kashmir02_1771x800_crop_center.jpg?v=1553492312" alt=""/>
                 </div>
                 <div>
-                    <img src="https://d224nth7ac0evy.cloudfront.net/codazon/slideshow/cache/1900x600/1/9/1900x600.jpg" alt=""/>
-                </div>
-                <div>
-                    <img src="https://d224nth7ac0evy.cloudfront.net/codazon/slideshow/cache/1900x600/1/9/1900x600.jpg" alt=""/>
+                    <img src="//cdn.shopify.com/s/files/1/0091/1143/7412/files/Mainslider-Desktop-ChKari03_1771x800_crop_center.jpg?v=1553860444" alt=""/>
                 </div>
                 </Slider>
             </div>

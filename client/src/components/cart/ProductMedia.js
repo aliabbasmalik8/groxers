@@ -4,7 +4,7 @@ class ProductMeida extends Component{
     render(){
         const { product } = this.props;
         return(
-            <div className="card product_media_container col-6">
+            <div className="card product_media_container col-xs-6 col-md-7">
                 <ReactImageMagnify {...{
                     smallImage: {
                         alt: 'Wristwatch by Ted Baker London',

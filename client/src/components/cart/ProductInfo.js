@@ -39,14 +39,11 @@ class ProductInfo extends Component{
     render(){
         const { product } = this.props;
         return(
-            <div className="product_info_container col-6">
+            <div className="product_info_container col-xs-6 col-md-5">
                 <div className="name">
                     {product && product.name}
                 </div>
                 <div className="sku">SKU#: {product && product.pid}</div>
-                {/* <div className="review">
-                    Be the first to review this product       
-                </div> */}
                 <div className="status">{product && product.skus && product.skus[0].out_of_stock ? 'Out Of Stock' : 'In Stock'}</div>
                 <div className="price">
                     <div className="current_price">Price#: {product && product.skus && product.skus[0].price} PK</div>
@@ -60,6 +57,10 @@ class ProductInfo extends Component{
                 <Link to={"/cart"} >
                     <div className="add_cart_btn" onClick={this.addCart}>ADD TO CART</div>
                 </Link>
+                <div className="description">
+                    {product && product.description && product.description}
+                </div>
+                
             </div>
         )
     }

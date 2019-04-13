@@ -45,12 +45,16 @@ class PageHeader extends Component{
                     }
                 </div>
                 <div className="header_content">
-                    <div className="logo_parent">
-                        <img src="/images/444.png" alt=""/>
-                    </div>
-                    <div className="cart_image_parent">
-                        <img src="" alt=""/>
-                    </div>
+                    <Link to={"/"}>
+                        <div className="logo_parent">
+                            <img src="/images/444.png" alt=""/>
+                        </div>
+                    </Link>
+                    <Link to={"/cart"}>
+                        <div className="cart_image_parent">
+                            <img src="" alt=""/>
+                        </div>
+                    </Link>
                 </div>
                 <nav className="header_wrapper_content">
                     <div className="header_wrapper_bottom">

@@ -16,7 +16,7 @@ import './dashboard.scss'
 class AdminDashboard extends Component{
     constructor(props){
         super(props);
-        this.state={activeTab: 'home'}
+        this.state={activeTab: 'pending-order'}
     }
     componentDidMount(){
         this.props.getAllOrders();
@@ -33,14 +33,14 @@ class AdminDashboard extends Component{
                 >
                     <SideNav.Toggle />
                     <SideNav.Nav defaultSelected="home">
-                        <NavItem eventKey="home">
+                        { /*<NavItem eventKey="home">
                             <NavIcon>
                                 <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                             </NavIcon>
                             <NavText>
                                 Home
                             </NavText>
-                        </NavItem>
+                        </NavItem> */}
                         <NavItem eventKey="pending-order">
                             <NavIcon>
                                 <i className="fab fa-jedi-order" style={{ fontSize: '1.75em' }} />
