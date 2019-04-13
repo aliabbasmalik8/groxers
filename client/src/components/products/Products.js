@@ -19,7 +19,7 @@ class Products extends Component{
         this.setState({
             products: products
         })
-        this.getProducts(1);
+        this.getProducts(0);
     }
     componentDidUpdate(prevProps){
         if(prevProps.products !== this.props.products){
@@ -27,6 +27,9 @@ class Products extends Component{
             this.setState({
                 products: products,
             })
+        }
+        if(prevProps.subCatagory !== this.props.subCatagory){
+            this.getProducts(0);
         }
     }
     filterList(event){

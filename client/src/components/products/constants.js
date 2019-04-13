@@ -17,5 +17,5 @@ export const main_to_sub_category_map = {
                              'electric goods', 'plastic & paper goods', 'home goods', 'car care'],
     'Baby Care': ['baby products', 'baby feeding', 'diapers'],
     'Pet Food': ['dog food', 'feed', 'cat food',],
-    'Miscellaneous': ['Other']
+    'Miscellaneous': ['other']
 }

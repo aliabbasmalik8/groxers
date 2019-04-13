@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../../models/Product");
+var titleCase = require('title-case');
 router.post("/add", (req, res) => {
     const product = new Product({
         name: req.body.name,
@@ -35,7 +36,7 @@ router.get("/getAll", (req, res) =>{
 })
 router.post("/catagory", (req, res) =>{
     Product
-        .find({ "category": { "$all": [req.body.catagory, req.body.subcatagory] } })
+        .find({ "category": { "$all": [req.body.catagory, titleCase(req.body.subcatagory)] } })
         .skip(req.body.offset*40)
         .limit(40)
         .then(products => res.send(products))
