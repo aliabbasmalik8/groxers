@@ -38,7 +38,7 @@ class Order extends Component{
                             {
                                 order.status === "makeOrder" && 'Pending' ||
                                 order.status === "deleverOrder" && 'Order Deliver' ||
-                                order.status === "completeOrder" && 'Complete'
+                                order.status === "completeOrder" && 'Completed'
                             }
                         </div>
                     </div>
@@ -55,7 +55,7 @@ class Order extends Component{
                         <div className="header total">TOTAL</div>
                     </div>
                     {
-                        order.cartItems.map((item, index)=>{
+                        order.cartItems && order.cartItems.map((item, index)=>{
                             return <Item index={order._id + index} item={item} />
                         })
                     }

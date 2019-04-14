@@ -85,14 +85,13 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/makeAdmin", (req,res)=>{
+  var updateObj = {userType: "admin"};
   User
-  .findOne({_id: req.body.id})
+  .findByIdAndUpdate(req.body.id, updateObj)
   .then(user =>{
-    user
-    .update({$set: {"userType":'admin' }})
-    .then(user => res.send(user))
-    .catch(err => console.log(err))
+    res.send(user);
   })
+  .catch(err => res.send(err))
 })
 // router.post("/makeAdmin", (req,res)=>{
 //   User
@@ -105,7 +104,6 @@ router.post("/makeAdmin", (req,res)=>{
 //   })
 // })
 
-
 router.post("/changePassword", (req, res)=>{
   const { errors, isValid } = validateLoginInput(req.body);
   if (!isValid) {
@@ -116,7 +114,7 @@ router.post("/changePassword", (req, res)=>{
   User.findOne({ email }).then(user => {
     // Check if user exists
     if (!user) {
-      return res.status(404).json({ emailnotfound: "Email not found" });
+      return res.status(404).json({ email: "Email not found" });
     }
     bcrypt.compare(password, user.password).then(isMatch => {
       if(isMatch) {
@@ -129,6 +127,8 @@ router.post("/changePassword", (req, res)=>{
               .catch(err => console.log(err));
           });
         });
+      }else{
+        return res.status(404).json({ password: "password incorrect" });
       }
     })
   })

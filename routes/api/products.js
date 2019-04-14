@@ -34,7 +34,12 @@ router.get("/getAll", (req, res) =>{
         .then(products => res.send(products))
         .catch(err => console.log(err))
 })
-
+router.post("/getAllSubCatagories", (req,res)=>{
+    Product
+        .distinct("category", { source: req.body.source })
+        .then(products => res.send(products))
+        .catch(err => console.log(err))
+})
 router.post("/catagory", (req, res) =>{
     let tags = [];
     let flag = true;

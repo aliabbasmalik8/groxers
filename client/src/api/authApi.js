@@ -2,7 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
 import { setCurrentUser } from './../actions/authActions'
-import {  makeAdminAction, changePasswordAction } from './../actions/adminAction'
+import {  makeAdminAction } from './../actions/adminAction'
 import {
   GET_ERRORS,
 } from "./../actions/types";
@@ -58,11 +58,15 @@ export const makeAdmin = (data) => dispatch =>{
     })
 };
 
-export const changePassword = (data) => dispatch =>{
+export const changePasswordApi = (data, history) => dispatch =>{
   axios
     .post("/api/users/changePassword", data)
-    .then(res =>{
-      dispatch(changePasswordAction(res.data))
-    })
+    .then(res => history.push("/login"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
 };
 

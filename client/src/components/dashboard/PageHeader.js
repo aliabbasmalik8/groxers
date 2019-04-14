@@ -45,7 +45,9 @@ class PageHeader extends Component{
                     {
                         this.props.auth.isAuthenticated ?
                             <span className="ch_header">
-                                <div className="change_password">CHANGE PASSWORD</div>
+                                <Link to={"/changePassword"}>
+                                    <div className="change_password">CHANGE PASSWORD</div>
+                                </Link>
                                 <div className="signout" onClick={()=>this.signOut()}><i class="fas fa-sign-out-alt"></i> SIGN OUT</div>
                             </span>:
                         <span>

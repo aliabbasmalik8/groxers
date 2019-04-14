@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import ChangePassword from "./components/auth/ChangePassword"
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProductIdex from "./components/products/ProductIndex"
@@ -45,6 +46,7 @@ class App extends Component {
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/changePassword" component={ChangePassword} />
             <Route exact path="/products" component={ProductIdex} />
             <Route path="/products/:productCatagory/:subCatagory/:source" component={ProductIdex}  />
             <Route exact path="/cart/:source/:id" component={Cart} />

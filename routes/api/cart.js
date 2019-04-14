@@ -101,10 +101,22 @@ router.post("/completeOrder", (req, res) => {
 })
 router.post("/deleteOrder", (req,res)=>{
     Cart
-    .remove({"_id": req.body.id})
-    .then(res1=>res.send(res1))
-    .catch(err => console.log(err))
+        .findById(req.body._id)
+        .then(item => {
+            if (item) {
+                item
+                    .updateOne({$set: {"status":'discarded'}})
+                    .then(cart =>res.json(cart))
+                    .catch(err => console.log(err))
+            }
+        });
 })
+// router.post("/deleteOrder", (req,res)=>{
+//     Cart
+//     .remove({"_id": req.body.id})
+//     .then(res1=>res.send(res1))
+//     .catch(err => console.log(err))
+// })
 router.get("/pendingOrders", (req,res) => {
     Cart
         .find({ status: 'makeOrder' })
