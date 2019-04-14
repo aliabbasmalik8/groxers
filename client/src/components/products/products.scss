@@ -17,9 +17,9 @@
                         cursor: pointer;
                         padding: 10px;
                         border-bottom: 1px solid #e4e4e4;
-                        display: inline-flex;
                         width: 100%;
                         align-items: baseline;
+
                         .content{
                             text-transform: uppercase;
                             color: #282828;
@@ -27,6 +27,19 @@
                             font-weight: 100;
                             &:hover{
                                 color: #fc7070;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                    .single_catagory1{
+                        cursor: pointer;
+                        width: 100%;
+                        align-items: baseline;
+                        padding-left: 10px;
+                        a{
+                            &:hover{
+                                color: #fc7070;
+                                text-decoration: none;
                             }
                         }
                     }

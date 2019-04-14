@@ -1,4 +1,26 @@
 .admin_dashbord_banner{
+    ._users{
+        padding-top: 50px;
+        .user_card{
+            display: flex;
+            justify-content: space-between;
+            background: #fff;
+            padding: 10px;
+            border-radius: 7px;
+            margin-bottom: 10px;
+            align-items: center;
+            .title{
+                font-weight: 600;
+                font-size: 16px;
+            }
+            .make_admin{
+                background: #fc7070;
+                color: #fff;
+                font-weight: 600;
+                cursor: pointer;
+            }
+        }
+    }
     .orders_banner{
         padding-bottom: 20px;
         padding-left: 64px;
@@ -90,6 +112,15 @@
                         cursor: pointer;
                         &:hover{
                             background: #cf7a7a
+                        }
+                    }
+                    .btn1{
+                        background: #da8e1c;
+                        color: #fff;
+                        font-weight: 600;
+                        cursor: pointer;
+                        &:hover{
+                            background: #ec9a1f
                         }
                     }
                 }

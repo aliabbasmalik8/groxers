@@ -2,7 +2,11 @@ import {
     GET_ALL_ORDERS,
     DELIVER_ORDER,
     ADMIN_DELIVER_ORDERS,
-    ADMIN_COMPLETED_ORDERS
+    ADMIN_COMPLETED_ORDERS,
+    DELETE_ORDER,
+    MAKE_ADMIN,
+    GET_ALL_USERS,
+    CHANGE_PASSWORD
 } from "../actions/types";
 const initialState = {
     pendingOrders: [],
@@ -46,6 +50,24 @@ export default function(state = initialState, action) {
                 ...state,
                 deliveredOrders: [...action.payload],
             }
+        case DELETE_ORDER:
+            newDeliverOrders = Object.assign([], state.deliverOrders);
+            index = newPendingOrders.findIndex(index => index._id === action.payload._id);
+            if(index !== -1){
+                newDeliverOrders.splice(index,1);
+            }
+            return { 
+                ...state,
+                deliveredOrders: newDeliverOrders,
+            }
+        case MAKE_ADMIN:
+            let newUsers = Object.assign([], state.users);
+            
+            return { ...state, users: [...newUsers] }
+        case GET_ALL_USERS:
+            return {...state, users: action.payload}
+        case CHANGE_PASSWORD:
+            return { ...state}
         default:
             return state;
     }

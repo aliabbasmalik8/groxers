@@ -1,6 +1,8 @@
 import axios from "axios";
 import { getProductsAction, addCartAction, getCartItemsAction, removeCartItemAction, makeOrderAction, getOrdersAction,
-       getAllOrdersAction, deliverOrderAction, getAdminAllDeliverOrdersAction, getAdminAllCompletedOrdersAction, completeOrderAction } from './../actions/productAction'
+       getAllOrdersAction, deliverOrderAction, getAdminAllDeliverOrdersAction, getAdminAllCompletedOrdersAction, completeOrderAction,
+       deleteOrderAction } from './../actions/productAction'
+import { getAllUsersAction } from './../actions/adminAction'
 
 export const getProducts = userData => dispatch =>{
   axios
@@ -64,6 +66,13 @@ export const completeOrder = (data) => dispatch =>{
       dispatch(completeOrderAction(res.data))
     })
 };
+export const deleteOrder = (data, order) => dispatch =>{
+  axios
+    .post("/api/cart/deleteOrder", data)
+    .then(res =>{
+      dispatch(deleteOrderAction(order))
+    })
+};
 export const getOrders = data => dispatch =>{
   axios
     .post("/api/cart/getOrders", data)
@@ -90,5 +99,12 @@ export const getAdminAllCompletedOrders = () => dispatch =>{
     .get("/api/cart/completedOrders")
     .then(res =>{
       dispatch(getAdminAllCompletedOrdersAction(res.data))
+    })
+};
+export const getAllUsers= (data) => dispatch =>{
+  axios
+    .get("/api/users/get", data)
+    .then(res =>{
+      dispatch(getAllUsersAction(res.data))
     })
 };

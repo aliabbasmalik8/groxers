@@ -19,7 +19,7 @@ class Products extends Component{
         this.setState({
             products: products
         })
-        this.getProducts(0);
+        this.getProducts(1);
     }
     componentDidUpdate(prevProps){
         if(prevProps.products !== this.props.products){
@@ -29,7 +29,7 @@ class Products extends Component{
             })
         }
         if(prevProps.subCatagory !== this.props.subCatagory){
-            this.getProducts(0);
+            this.getProducts(1);
         }
     }
     filterList(event){
@@ -43,11 +43,12 @@ class Products extends Component{
         }
     }
     getProducts(page){
-        const { catagory, subCatagory } = this.props;
+        const { catagory, subCatagory, source } = this.props;
         let data ={
             catagory: catagory,
             subcatagory: subCatagory,
-            offset: page,
+            offset: page-1,
+            source: source,
         }
         this.props.getProductsWithCatagory(data);
     }

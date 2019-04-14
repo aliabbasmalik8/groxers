@@ -60,7 +60,6 @@ router.post("/delete", (req, res) => {
         })
         .catch(err => console.log(err));
 })
-
 router.post("/makeOrder", (req, res) => {
     Cart
         .findOne({ $and: [ { sessionId: req.body.sessionId }, { status: 'inCart' } ] })
@@ -99,6 +98,12 @@ router.post("/completeOrder", (req, res) => {
 
             }
         });
+})
+router.post("/deleteOrder", (req,res)=>{
+    Cart
+    .remove({"_id": req.body.id})
+    .then(res1=>res.send(res1))
+    .catch(err => console.log(err))
 })
 router.get("/pendingOrders", (req,res) => {
     Cart

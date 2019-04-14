@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
+import Popup from "reactjs-popup";
 import { logoutUser } from "../../api/authApi";
 import { getProducts, getCartItems } from './../../api/productApi'
-
+import Card from './Card';
 class PageHeader extends Component{
     componentDidMount(){
         // this.props.products.length === 0 &&
@@ -27,13 +28,26 @@ class PageHeader extends Component{
         this.props.logoutUser();
     }
     render(){
-        const { cart, total } = this.props;
+        const { cart, total, auth } = this.props;
         return(
             <div className="page_header">
                 <div className="panel_warpper">
                     {
+                        this.props.auth.isAuthenticated &&
+                        <div className="user_info">
+                            <div className="user_name">Hi {auth.user.name}</div>
+                            <Link to={"/orders"}>
+                                My Orders
+                            </Link>
+                        </div>||
+                        <div></div>
+                    }
+                    {
                         this.props.auth.isAuthenticated ?
-                            <div className="signout" onClick={()=>this.signOut()}>SIGN OUT</div> :
+                            <span className="ch_header">
+                                <div className="change_password">CHANGE PASSWORD</div>
+                                <div className="signout" onClick={()=>this.signOut()}><i class="fas fa-sign-out-alt"></i> SIGN OUT</div>
+                            </span>:
                         <span>
                             <Link to={"/register"}>
                                 <div className="create_account">CREATE AN ACCOUNT</div>
@@ -51,58 +65,44 @@ class PageHeader extends Component{
                         </div>
                     </Link>
                     <Link to={"/cart"}>
-                        <div className="cart_image_parent">
-                            <img src="" alt=""/>
+                        <div>
+                            <i className="fas fa-cart-plus"></i>&nbsp;
+                            {'Cart: ('+cart.length+') ' + total + ' PK'}
                         </div>
                     </Link>
                 </div>
                 <nav className="header_wrapper_content">
                     <div className="header_wrapper_bottom">
-                        {/*<Link to={"/products/Electronics"}>
-                            <div className="inner_header">Electronics</div>
-                        </Link>
-                        <Link to={"/products/Men's Clothing"}>
-                            <div className="inner_header">Men's Clothing</div>
-                        </Link>
-                        <Link to={"/products/Women's Clothing"}>
-                            <div className="inner_header">Women's Clothing</div>
-                        </Link>
-                        <Link to={"/products/Accessories"}>
-                            <div className="inner_header">Accessories</div>
-                        </Link>
-                        <Link to={"/products/Decoration"}>
-                            <div className="inner_header">Decoration</div>
-                        </Link>
-                        <Link to={"/products/Toys"}>
-                            <div className="inner_header">Toys</div>
-                        </Link>
-                        <Link to={"/products/Grocery"}>
-                            <div className="inner_header">Grocery</div>
-                        </Link>
-                        <Link to={"/products/Health and Beauty"}>
-                            <div className="inner_header">Health and Beauty</div>
-                        </Link>
-                        <Link to={"/products/Household Essentials"}>
-                            <div className="inner_header">Household Essentials</div>
-                        </Link>
-                        <Link to={"/products/Baby Care"}>
-                            <div className="inner_header">Baby Care</div>
-                        </Link>
-                        <Link to={"/products/Pet Food"}>
-                            <div className="inner_header">Pet Food</div>
-                        </Link> */}
-                        
-                        <Link to={"/cart"}>
-                            <div>
-                                <i className="fas fa-cart-plus"></i>&nbsp;
-                                {'Cart: ('+cart.length+') ' + total + ' PK'}
-                            </div>
-                        </Link>
+                        <NavItem catagory={"Men's Clothing"} width={'250px'} direction={'bottom right'}/>
+                        <NavItem catagory={"Women's Clothing"} width={'400px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Accessories'} width={'400px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Decoration'} width={'500px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Toys'} width={'400px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Grocery'} width={'400px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Health and Beauty'} width={'400px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Household Essentials'} width={'400px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Baby Care'} width={'300px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Pet Food'} width={'300px'} direction={'bottom left'}/>
                     </div>
                 </nav>
             </div>
         )
     }
+}
+function NavItem(props){
+    const { catagory, width, direction } = props;
+    return(
+        <a href={"/products/"+catagory+"/all/all"}>
+            <Popup
+                trigger={<div className="inner_header">{catagory}</div>}
+                position={direction}
+                contentStyle={{ width: width }}
+                on="hover"
+                >
+                <Card catagory={catagory}/>
+            </Popup>
+        </a>
+    )
 }
 PageHeader.propTypes = {
     getProducts: PropTypes.func.isRequired,
@@ -115,4 +115,4 @@ const mapStateToProps = state => ({
     cart: state.items.cart,
     total: state.items.total,
 });
-export default connect(mapStateToProps,{ getProducts, logoutUser, getCartItems })(withRouter(PageHeader))
+export default connect(mapStateToProps,{ getProducts, logoutUser, getCartItems })((PageHeader))

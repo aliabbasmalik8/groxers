@@ -4,48 +4,33 @@ import Filter from './Filter'
 import Products from './Products'
 import PageHeader from './../dashboard/PageHeader'
 import Footer from './../dashboard/Footer';
-import { main_to_sub_category_map } from './constants'
 import './products.scss'
 class ProductIdex extends Component{
     constructor(props){
         super(props);
-        let catagory = this.props.match.params.productCatagory;
         this.state={
             products:[],
-            subCatagory: main_to_sub_category_map[catagory][0],
+            catagory: "",
+            subCatagory: '',
+            source: "",
         }
         this.filterProducts = this.filterProducts.bind(this);
     }
     componentDidMount(){
         let catagory = this.props.match.params.productCatagory;
-        this.props.history.push('/products/'+catagory)
-        const { products } = this.props;
-        let filterProducts = [];
-        products.map(product =>{
-            if(product.category[0] === catagory){
-                return filterProducts.push(product)
-            }else{
-                return null;
-            }
-        })
+        let subCatagory = this.props.match.params.subCatagory;
+        let source = this.props.match.params.source;
+        this.props.history.push('/products/'+catagory+"/"+subCatagory+"/"+source)
         this.setState({
-            products: [...filterProducts],
+            subCatagory: subCatagory,
+            source: source,
         })
     }
     componentDidUpdate(prevProps){
         if(prevProps.products !== this.props.products){
             const { products } = this.props;
-            let catagory = this.props.match.params.productCatagory;
-            let filterProducts = [];
-            products.map(product => {
-                if(product.category[0] === catagory){
-                    return filterProducts.push(product)
-                }else{
-                    return null;
-                }
-            })
             this.setState({
-                products: [...filterProducts]
+                products: products,
             })
         }
     }
@@ -73,7 +58,7 @@ class ProductIdex extends Component{
                 <div className="products_filter_container_parent container">
                     <div className="products_filter_container">
                         <Filter filterProducts={this.filterProducts} catagory={catagory}/>
-                        <Products products={this.state.products} catagory={catagory} subCatagory={this.state.subCatagory}/>
+                        <Products products={this.state.products} catagory={catagory} subCatagory={this.state.subCatagory} source={this.state.source}/>
                     </div>
                 </div>
                 <Footer />

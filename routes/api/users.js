@@ -83,7 +83,57 @@ router.post("/login", (req, res) => {
       });
     });
 });
-router.get('/', (req,res)=>{
+
+router.post("/makeAdmin", (req,res)=>{
+  User
+  .findOne({_id: req.body.id})
+  .then(user =>{
+    user
+    .update({$set: {"userType":'admin' }})
+    .then(user => res.send(user))
+    .catch(err => console.log(err))
+  })
+})
+// router.post("/makeAdmin", (req,res)=>{
+//   User
+//   .findOne({_id: req.body.id})
+//   .then(user =>{
+//     user
+//     .update({$set: {"userType":'admin' }})
+//     .then(user => res.send(user))
+//     .catch(err => console.log(err))
+//   })
+// })
+
+
+router.post("/changePassword", (req, res)=>{
+  const { errors, isValid } = validateLoginInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+  const email = req.body.email;
+  const password = req.body.password;
+  User.findOne({ email }).then(user => {
+    // Check if user exists
+    if (!user) {
+      return res.status(404).json({ emailnotfound: "Email not found" });
+    }
+    bcrypt.compare(password, user.password).then(isMatch => {
+      if(isMatch) {
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(req.body.newPassword, salt, (err, hash) => {
+            if (err) throw err;
+            user
+              .updateOne({$set: {"password": hash }})
+              .then(user => res.json(user))
+              .catch(err => console.log(err));
+          });
+        });
+      }
+    })
+  })
+})
+router.get('/get', (req,res)=>{
   User
     .find()
     .then(users => res.send(users))

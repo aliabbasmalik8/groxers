@@ -34,12 +34,51 @@ router.get("/getAll", (req, res) =>{
         .then(products => res.send(products))
         .catch(err => console.log(err))
 })
+
 router.post("/catagory", (req, res) =>{
-    Product
-        .find({ "category": { "$all": [req.body.catagory, titleCase(req.body.subcatagory)] } })
-        .skip(req.body.offset*40)
-        .limit(40)
-        .then(products => res.send(products))
-        .catch(err => console.log(err))
+    let tags = [];
+    let flag = true;
+    if(req.body.catagory !== "all"){
+        tags.push(req.body.catagory)
+    }
+    if(req.body.subcatagory !== "all"){
+        tags.push(titleCase(req.body.subcatagory))
+    }
+    if(req.body.subcatagory === "all" && req.body.catagory === "all"){
+        flag = false;
+    }
+    if(flag){
+        if(req.body.source === "all"){
+            Product
+                .find({ "category": { "$all": tags }})
+                .skip(req.body.offset*40)
+                .limit(40)
+                .then(products => res.send(products))
+                .catch(err => console.log(err))
+        }else{
+            Product
+                .find({ "category": { "$all": tags } }, { "source": req.body.source})
+                .skip(req.body.offset*40)
+                .limit(40)
+                .then(products => res.send(products))
+                .catch(err => console.log(err))
+        }
+    }else{
+        if(req.body.source === "all"){
+            Product
+                .find()
+                .skip(req.body.offset*40)
+                .limit(40)
+                .then(products => res.send(products))
+                .catch(err => console.log(err))
+        }else{
+            Product
+                .find({ "source": req.body.source})
+                .skip(req.body.offset*40)
+                .limit(40)
+                .then(products => res.send(products))
+                .catch(err => console.log(err))
+        }
+    }
 })
 module.exports = router;

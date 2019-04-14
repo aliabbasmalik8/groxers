@@ -9,9 +9,11 @@ class Filter extends Component{
     }
     componentDidMount(){
         let { catagory } = this.props;
-        this.setState({
-            subCatagories: [...main_to_sub_category_map[catagory]]
-        })
+        if(catagory !== "all"){
+            this.setState({
+                subCatagories: [...main_to_sub_category_map[catagory]]
+            })
+        }
     }
     render(){
         let { filterProducts } = this.props;

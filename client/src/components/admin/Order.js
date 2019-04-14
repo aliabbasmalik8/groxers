@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Item from './Item'
-import { deliverOrder } from './../../api/productApi'
+import { deliverOrder, deleteOrder } from './../../api/productApi'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 class Order extends Component{
     constructor(props){
         super(props);
         this._deliverOrder = this._deliverOrder.bind(this);
+        this._deleteOrder = this._deleteOrder.bind(this);
     }
     _deliverOrder(){
         const { order } = this.props;
@@ -14,6 +15,13 @@ class Order extends Component{
             _id: order._id
         }
         this.props.deliverOrder(orderData, order);
+    }
+    _deleteOrder(){
+        const { order } = this.props;
+        const orderData = {
+            _id: order._id
+        }
+        this.props.deleteOrder(orderData, order);
     }
     render(){
         const { order } = this.props;
@@ -64,6 +72,12 @@ class Order extends Component{
                             <div className="btn" onClick={this._deliverOrder}>DELIVER ORDER</div>
                         </div>
                     }
+                    {
+                        order.status === "makeOrder" &&
+                        <div className="order_btn_parent">
+                            <div className="btn btn1" onClick={this._deliverOrder}>DISCARD ORDER</div>
+                        </div>
+                    }
                     <div className="quantity"></div>
                     <div className="grand_total">{order.total}</div>
                 </div>
@@ -73,5 +87,6 @@ class Order extends Component{
 }
 Order.propTypes = {
     deliverOrder: PropTypes.func.isRequired,
+    deleteOrder: PropTypes.func.isRequired,
 };
-export default connect(null, {deliverOrder})(Order);
+export default connect(null, {deliverOrder, deleteOrder})(Order);

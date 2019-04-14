@@ -2,6 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
 import { setCurrentUser } from './../actions/authActions'
+import {  makeAdminAction, changePasswordAction } from './../actions/adminAction'
 import {
   GET_ERRORS,
 } from "./../actions/types";
@@ -49,3 +50,19 @@ export const logoutUser = () => dispatch => {
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
+export const makeAdmin = (data) => dispatch =>{
+  axios
+    .post("/api/users/makeAdmin", data)
+    .then(res =>{
+      dispatch(makeAdminAction(res.data))
+    })
+};
+
+export const changePassword = (data) => dispatch =>{
+  axios
+    .post("/api/users/changePassword", data)
+    .then(res =>{
+      dispatch(changePasswordAction(res.data))
+    })
+};
+
