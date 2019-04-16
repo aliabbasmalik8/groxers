@@ -1,7 +1,8 @@
 import {
     GET_ALL_USERS,
     MAKE_ADMIN,
-    CHANGE_PASSWORD
+    CHANGE_PASSWORD,
+    REMOVE_ADMIN
 } from "./types";
 export function getAllUsersAction(payload){
     return {
@@ -22,3 +23,9 @@ export function changePasswordAction(payload){
         payload,
     }
 };
+export const removeAdminAction = (payload) =>{
+    return {
+        type: REMOVE_ADMIN,
+        payload,
+    }
+}

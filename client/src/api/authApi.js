@@ -2,7 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
 import { setCurrentUser } from './../actions/authActions'
-import {  makeAdminAction } from './../actions/adminAction'
+import {  makeAdminAction, removeAdminAction } from './../actions/adminAction'
 import {
   GET_ERRORS,
 } from "./../actions/types";
@@ -55,6 +55,13 @@ export const makeAdmin = (data) => dispatch =>{
     .post("/api/users/makeAdmin", data)
     .then(res =>{
       dispatch(makeAdminAction(res.data))
+    })
+};
+export const removeAdmin = (data) => dispatch =>{
+  axios
+    .post("/api/users/removeAdmin", data)
+    .then(res =>{
+      dispatch(removeAdminAction(res.data))
     })
 };
 

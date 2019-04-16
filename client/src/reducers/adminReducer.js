@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import {
     GET_ALL_ORDERS,
     DELIVER_ORDER,
@@ -6,7 +7,8 @@ import {
     DELETE_ORDER,
     MAKE_ADMIN,
     GET_ALL_USERS,
-    CHANGE_PASSWORD
+    CHANGE_PASSWORD,
+    REMOVE_ADMIN
 } from "../actions/types";
 const initialState = {
     pendingOrders: [],
@@ -61,9 +63,15 @@ export default function(state = initialState, action) {
                 deliveredOrders: newDeliverOrders,
             }
         case MAKE_ADMIN:
-            let newUsers = Object.assign([], state.users);
-            
-            return { ...state, users: [...newUsers] }
+            let newUsers = _.cloneDeep(state.users);
+            index = newUsers.findIndex(user=>user._id == action.payload._id)
+            newUsers[index].userType = "admin";
+            return { ...state, users: _.cloneDeep(newUsers) }
+        case REMOVE_ADMIN:
+            newUsers = _.cloneDeep(state.users);
+            index = newUsers.findIndex(user=>user._id == action.payload._id)
+            newUsers[index].userType = "user";
+            return { ...state, users: _.cloneDeep(newUsers) }
         case GET_ALL_USERS:
             return {...state, users: action.payload}
         case CHANGE_PASSWORD:

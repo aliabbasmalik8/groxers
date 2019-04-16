@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { makeAdmin } from './../../api/authApi'
+import { makeAdmin, removeAdmin } from './../../api/authApi'
 class UserCard extends Component{
     constructor(props){
         super(props);
         this.provideAdminPrivilage = this.provideAdminPrivilage.bind(this);
+        this.removeAdminPrivilage = this.removeAdminPrivilage.bind(this);
     }
     provideAdminPrivilage(){
         const { user } = this.props;
@@ -13,6 +14,13 @@ class UserCard extends Component{
             id: user._id,
         }
         this.props.makeAdmin(data);
+    }
+    removeAdminPrivilage(){
+        const { user } = this.props;
+        let data ={
+            id: user._id,
+        }
+        this.props.removeAdmin(data);
     }
     render(){
         const { user } = this.props;
@@ -25,7 +33,7 @@ class UserCard extends Component{
                     user.userType === "user" &&
                     <div className="btn make_admin" onClick={this.provideAdminPrivilage}>MAKE ADMIN</div> ||
                     user.userType === "admin" &&
-                    <div className="btn make_admin">UNSET ADMIN PRIVILEGE</div>
+                    <div className="btn make_admin" onClick={this.removeAdminPrivilage}>UNSET ADMIN PRIVILEGE</div>
                 }
             </div>
         )
@@ -33,5 +41,6 @@ class UserCard extends Component{
 }
 UserCard.propTypes = {
     makeAdmin: PropTypes.func.isRequired,
+    removeAdmin: PropTypes.func.isRequired,
 };
-export default connect(null, {makeAdmin})(UserCard);
+export default connect(null, {makeAdmin, removeAdmin})(UserCard);

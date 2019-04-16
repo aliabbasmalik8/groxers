@@ -86,6 +86,7 @@ router.post("/login", (req, res) => {
 
 router.post("/makeAdmin", (req,res)=>{
   var updateObj = {userType: "admin"};
+  console.log(req.body);
   User
   .findByIdAndUpdate(req.body.id, updateObj)
   .then(user =>{
@@ -93,17 +94,16 @@ router.post("/makeAdmin", (req,res)=>{
   })
   .catch(err => res.send(err))
 })
-// router.post("/makeAdmin", (req,res)=>{
-//   User
-//   .findOne({_id: req.body.id})
-//   .then(user =>{
-//     user
-//     .update({$set: {"userType":'admin' }})
-//     .then(user => res.send(user))
-//     .catch(err => console.log(err))
-//   })
-// })
-
+router.post("/removeAdmin", (req,res)=>{
+  var updateObj = {userType: "user"};
+  console.log(req.body);
+  User
+  .findByIdAndUpdate(req.body.id, updateObj)
+  .then(user =>{
+    res.send(user);
+  })
+  .catch(err => res.send(err))
+})
 router.post("/changePassword", (req, res)=>{
   const { errors, isValid } = validateLoginInput(req.body);
   if (!isValid) {

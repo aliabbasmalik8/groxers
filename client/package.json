@@ -8,6 +8,7 @@
     "bootstrap": "^4.3.1",
     "jquery": "^1.9.1",
     "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.11",
     "popper.js": "^1.14.7",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
