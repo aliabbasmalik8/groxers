@@ -49,7 +49,7 @@ export const makeOrder = data => dispatch =>{
   axios
     .post("/api/cart/makeOrder", data)
     .then(res =>{
-      dispatch(makeOrderAction(data))
+      dispatch(makeOrderAction(res.data))
     })
 };
 export const deliverOrder = (data, order) => dispatch =>{

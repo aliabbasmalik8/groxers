@@ -27,9 +27,9 @@ class Order extends Component{
                         </div>
                     </div>
                     <div className="parent_class total">
-                        <div className="title">Total Price</div>
+                        <div className="title">Total Price + Delivery Charges</div>
                         <div className="content">
-                            {order.total}
+                            {order.total+" + "+ 200 +" = "+parseInt(order.total+200)}
                         </div>
                     </div>
                     <div className="parent_class status">

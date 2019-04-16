@@ -53,14 +53,14 @@ export default function(state = initialState, action) {
                 deliveredOrders: [...action.payload],
             }
         case DELETE_ORDER:
-            newDeliverOrders = Object.assign([], state.deliverOrders);
+            newPendingOrders = Object.assign([], state.pendingOrders);
             index = newPendingOrders.findIndex(index => index._id === action.payload._id);
             if(index !== -1){
-                newDeliverOrders.splice(index,1);
+                newPendingOrders.splice(index,1);
             }
             return { 
                 ...state,
-                deliveredOrders: newDeliverOrders,
+                pendingOrders: [...newPendingOrders],
             }
         case MAKE_ADMIN:
             let newUsers = _.cloneDeep(state.users);

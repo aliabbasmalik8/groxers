@@ -67,7 +67,7 @@ router.post("/makeOrder", (req, res) => {
             if (item) {
                 item
                     .updateOne({$set: {"status":'makeOrder', "address": req.body.address}})
-                    .then(cart =>res.json(cart))
+                    .then(cart =>res.json(item))
                     .catch(err => console.log(err))
 
             }
@@ -111,12 +111,6 @@ router.post("/deleteOrder", (req,res)=>{
             }
         });
 })
-// router.post("/deleteOrder", (req,res)=>{
-//     Cart
-//     .remove({"_id": req.body.id})
-//     .then(res1=>res.send(res1))
-//     .catch(err => console.log(err))
-// })
 router.get("/pendingOrders", (req,res) => {
     Cart
         .find({ status: 'makeOrder' })

@@ -75,7 +75,7 @@ class Order extends Component{
                     {
                         order.status === "makeOrder" &&
                         <div className="order_btn_parent">
-                            <div className="btn btn1" onClick={this._deliverOrder}>DISCARD ORDER</div>
+                            <div className="btn btn1" onClick={this._deleteOrder}>DISCARD ORDER</div>
                         </div>
                     }
                     <div className="quantity"></div>
