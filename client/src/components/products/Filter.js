@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { main_to_sub_category_map } from './constants'
+import { main_to_sub_category_map, sub_catagories } from './constants'
+import { Link } from "react-router-dom";
 class Filter extends Component{
     constructor(props){
         super(props);
@@ -8,21 +9,26 @@ class Filter extends Component{
         }
     }
     componentDidMount(){
-        let { catagory } = this.props;
+        let { catagory, source } = this.props;
         if(catagory !== "all"){
             this.setState({
                 subCatagories: [...main_to_sub_category_map[catagory]]
+            })
+        }else{
+            this.setState({
+                subCatagories: [...sub_catagories[source]]
             })
         }
     }
     render(){
         let { filterProducts } = this.props;
+        let { catagory, source } = this.props;
         return(
             <div className="sub_catagory_filter_parent">
                 <div className="sub_catagory_filter">
                 {
-                    this.state.subCatagories.map((catagory, index) =>{
-                        return <SingleCatagory key={index} name={catagory} filterProducts={filterProducts}/>
+                    this.state.subCatagories.map((subcatagory, index) =>{
+                        return <SingleCatagory key={index} name={subcatagory} catagory={catagory} source={source} filterProducts={filterProducts}/>
                     })
                 }
                 </div>
@@ -32,10 +38,10 @@ class Filter extends Component{
 }
 class SingleCatagory extends Component{
     render(){
-        const { name, filterProducts } = this.props;
+        const { name, catagory, source } = this.props;
         return(
-            <div className="single_catagory" onClick={()=>filterProducts(name)}>
-                <div className="content">{''+name}</div>
+            <div className="single_catagory">
+                <a href={"/products/"+catagory+"/"+name+"/"+source} className="content">{''+name}</a>
             </div>
         )
     }

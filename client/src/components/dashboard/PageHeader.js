@@ -8,8 +8,6 @@ import { getProducts, getCartItems } from './../../api/productApi'
 import Card from './Card';
 class PageHeader extends Component{
     componentDidMount(){
-        // this.props.products.length === 0 &&
-        //     this.props.getProducts();
         if(this.props.cart.length === 0){
             let data={
                 sessionId: this.props.auth.user.id,

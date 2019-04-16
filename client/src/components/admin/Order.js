@@ -79,7 +79,7 @@ class Order extends Component{
                         </div>
                     }
                     <div className="quantity"></div>
-                    <div className="grand_total">{order.total}</div>
+                    <div className="grand_total">{parseInt(order.total)+200}</div>
                 </div>
             </div>
         )

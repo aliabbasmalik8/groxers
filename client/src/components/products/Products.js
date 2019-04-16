@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux'
 import Product from './Product'
 import { getProductsWithCatagory } from './../../api/productApi'
-import Pagination from "react-js-pagination";
+import InfiniteScroll from 'react-infinite-scroller';
 class Products extends Component{
     constructor(props){
         super(props);
@@ -19,7 +19,6 @@ class Products extends Component{
         this.setState({
             products: products
         })
-        this.getProducts(1);
     }
     componentDidUpdate(prevProps){
         if(prevProps.products !== this.props.products){
@@ -27,9 +26,6 @@ class Products extends Component{
             this.setState({
                 products: products,
             })
-        }
-        if(prevProps.subCatagory !== this.props.subCatagory){
-            this.getProducts(1);
         }
     }
     filterList(event){
@@ -43,7 +39,7 @@ class Products extends Component{
         }
     }
     getProducts(page){
-        const { catagory, subCatagory, source } = this.props;
+        const { catagory, subCatagory, source, hasMore } = this.props;
         let data ={
             catagory: catagory,
             subcatagory: subCatagory,
@@ -60,6 +56,11 @@ class Products extends Component{
                     <input type="text" placeholder="Search" className="input_contral" onChange={(e) => this.filterList(e)}/>
                     <i href="#" className="fa fa-search btn-search seacr_icon"></i>
                 </div>
+                <InfiniteScroll
+                pageStart={0}
+                loadMore={this.getProducts}
+                hasMore={this.state.hasMore}
+                >
                     <div className="row products_row">
                         <div className="col-4">
                             {
@@ -95,13 +96,7 @@ class Products extends Component{
                             }
                         </div>
                     </div>
-                    <Pagination
-                        activePage={1}
-                        itemsCountPerPage={10}
-                        totalItemsCount={450}
-                        pageRangeDisplayed={5}
-                        onChange={this.getProducts}
-                    />
+                </InfiniteScroll>
             </div>
         )
     }
@@ -109,4 +104,7 @@ class Products extends Component{
 Products.propTypes = {
     getProductsWithCatagory: PropTypes.func.isRequired,
 };
-export default connect(null, {getProductsWithCatagory})(Products)
+const mapStateToProps = state => ({
+    hasMore: state.items.hasMore,
+});
+export default connect(mapStateToProps, {getProductsWithCatagory})(Products)

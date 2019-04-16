@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import {
     GET_PRODUCTS,
     ADD_CART,
@@ -14,13 +15,21 @@ const initialState = {
    pendingOrder: [],
    deliverOrder: [],
    deliveredOrder: [],
+   hasMore: true,
 };
 export default function(state = initialState, action) {
     switch (action.type) {
         case GET_PRODUCTS:
+            let newProducts = _.cloneDeep(state.products);
+            newProducts = newProducts.concat(action.payload);
+            let flag = true;
+            if(action.payload.length == 0){
+                flag = false;
+            }
             return {
             ...state,
-            products: action.payload
+            products: newProducts,
+            hasMore: flag,
             };
         case ADD_CART:
             let newCart = Object.assign([], state.cart);

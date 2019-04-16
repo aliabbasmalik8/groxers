@@ -5,7 +5,7 @@ class ProductcatagoryCard extends Component{
         const { name, image, source } = this.props;
         return(
             <div className="single_card">
-                <Link to={"/products/all/all/"+source}>
+                <a href={"/products/all/all/"+source}>
                     { /*<div className="image_parent">
                         <img src={image} alt=""/>
                     </div> */}  
@@ -13,7 +13,7 @@ class ProductcatagoryCard extends Component{
                         <div className="title">{name}</div>
                         <div className="shop_now_button">shop now</div>
                     </div>
-                </Link>
+                </a>
             </div>
         )
     }

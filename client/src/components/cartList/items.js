@@ -51,7 +51,9 @@ function GrandTotal(props){
     const { total } = props;
     return(
         <div className="grand_total row">
-            {'Total: PKR ' + total }
+            <div>{'Delivery Charges: PKR 200' }</div>
+            <div>{'Total: PKR ' + total }</div>
+            <div>{'Grand Total: PKR ' + (parseInt(total)+200) }</div>
         </div>
     )
 }

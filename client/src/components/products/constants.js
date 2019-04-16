@@ -1,5 +1,4 @@
 export const main_to_sub_category_map = {
-    "Accessories": ["other accessories"],
     "Decoration": ["tissue box", "bowls", "ashtray", "trays", "candle stands",
                    "mirrors", "bath decor", "flowers", "vase", "mix decoration items",
                    "photo frame & album decor", "jewellery box"],
@@ -17,19 +16,150 @@ export const main_to_sub_category_map = {
     "Accessories": ["bags", "shawls/stoles", "socks", "undergarments", "other accessories"],
 }
 
+export const sub_catagories = {
+    "mcc":[
+        "Baby Products",
+        "General Items",
+        "Other",
+        "Frozen Food",
+        "Snacks",
+        "Beverages",
+        "Dairy",
+        "Fruits & Vegetables",
+        "Cosmetic",
+        "Cat Food",
+        "Toiletries",
+        "Diapers",
+        "Perfume",
+        "Deli",
+        "Laundry",
+        "Skin Care",
+        "Mens",
+        "Decoration",
+        "Flowers",
+        "Diet And Nutrition",
+        "Home Baking",
+        "Dog Food",
+        "Vase",
+        "Photo Frame & Album Decor",
+        "Electronics",
+        "Juicer Blender & Grinder",
+        "Tissue Box",
+        "Other Electronics",
+        "Baby Feeding"
+    ],
+    "alfatah":[
+        "Beverages",
+        "Frozen Food",
+        "General Items",
+        "Other",
+        "Deli",
+        "Snacks",
+        "Diet And Nutrition",
+        "Diapers",
+        "Baby Feeding",
+        "Dog Food",
+        "Baby Products",
+        "Hair Care",
+        "Cat Food",
+        "Toiletries",
+        "Perfume",
+        "Decoration",
+        "Vase",
+        "Fruits & Vegetables",
+        "Car Care",
+        "Home Goods",
+        "Plastic & Paper Goods",
+        "Electric Goods",
+        "Cleaners",
+        "Laundry",
+        "Flowers",
+        "Insecticides",
+        "Kitchen Ware",
+        "Skin Care",
+        "Personal Care",
+        "Home Baking",
+        "Dairy",
+        "Pantry",
+        "Cosmetic",
+        "Electronics",
+        "Juicer Blender & Grinder",
+        "Activity Toys",
+    ],
+    "gulahmed":[
+        "Tops",
+        "Bottoms",
+        "Stitched",
+        "Mens",
+        "Other",
+        "Unstitched",
+        "Undergarments",
+        "Bags",
+        "Footwear",
+        "Stitched/Unstitched"
+    ],
+    "khaadi":[
+        "Stitched",
+        "Other",
+        "Socks",
+        "Tops",
+        "Bottoms",
+        "Undergarments",
+        "Dresses",
+        "Boys",
+    ],
+    "metro":[
+        "Other",
+        "Fruits & Vegetables",
+        "Cleaners",
+        "Toiletries",
+        "General Items",
+        "Dairy",
+        "Laundry",
+        "Diapers",
+        "Insecticides",
+        "Hair Care",
+        "Electronics",
+        "Other Electronics",
+        "Perfume",
+        "Beverages",
+        "Snacks",
+        "Home Baking",
+        "Frozen Food"
+    ],
+    "sanasafinaz":[
+        "Unstitched",
+        "Other",
+        "Bottoms",
+        "Stitched/Unstitched"
+    ],
+    "warda":[
+        "Stitched",
+        "Tops",
+        "Other",
+        "Stitched/Unstitched",
+        "Bottoms",
+        "Unstitched"
+    ],
+    "J.":[
+        "Boys",
+        "Other",
+        "Stitched",
+        "Tops",
+        "Bottoms",
+        "Unstitched",
+        "Footwear",
+        "Undergarments",
+        "Stitched/Unstitched",
+        "Bags"
+    ]
+}
+
 export const clothing_category_map = {
     "Men's Clothing": ["mens", "boys"],
     "Women's Clothing": ["unstitched", "stitched", "bottoms", "girls", "tops", "dresses", "stitched/unstitched"],
     "Accessories": ["bags", "shawls/stoles", "socks", "undergarments", "other accessories"],
 }
-export const colth_subcatagories = {
-    "catagories": ["Men's Clothing", "Women's Clothing", "Accessories"]
-}
-
-export const groxers_subcatagories = {
-    "catagories": [ "Accessories", "Decoration", "Toys", "Grocery", "Health and Beauty", "Household Essentials", "Baby Care", "Pet Food"]
-}
-
 export const groxer_category_map = {
     "Accessories": ["other accessories"],
     "Decoration": ["tissue box", "bowls", "ashtray", "trays", "candle stands",

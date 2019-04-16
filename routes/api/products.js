@@ -62,7 +62,7 @@ router.post("/catagory", (req, res) =>{
                 .catch(err => console.log(err))
         }else{
             Product
-                .find({ "category": { "$all": tags } }, { "source": req.body.source})
+                .find({ "category": { "$all": tags }})
                 .skip(req.body.offset*40)
                 .limit(40)
                 .then(products => res.send(products))
