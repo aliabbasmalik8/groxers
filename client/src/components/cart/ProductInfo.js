@@ -39,7 +39,13 @@ class ProductInfo extends Component{
     render(){
         const { product } = this.props;
         return(
-            <div className="product_info_container col-xs-6 col-md-5">
+            <div className="product_info_container col-xs-6 col-md-5 col-sm-12">
+                <div className="img_parent">
+                    {
+                        product && product.images &&
+                        <img src={product.images[0]} />
+                    }
+                </div>
                 <div className="name">
                     {product && product.name}
                 </div>

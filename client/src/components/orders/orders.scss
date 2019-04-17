@@ -43,11 +43,41 @@
                     .quantity{
                         width: 18%;                        
                     }
+                    .quantity1{
+                        display: none;
+                    }
                     .total{
                         width: 18%;
                     }
                 }
             }
         }
+    }
+}
+@media all and(max-width: 767px){
+    ._banner ._container .order_card{
+        padding: 3px;
+        font-size: 14px;
+        .upper_div{
+            padding: 10px 3px;
+            .parent_class{
+                .title{
+                    display: none;
+                }
+            }
+            .order_complete{
+                font-size: 12px;
+                padding: 0;
+            }
+        }
+        .items .single_item{
+            .qt{
+                display: none;
+            }
+            .quantity1{
+                display: block;
+                width: 18%;
+            }
+        } 
     }
 }

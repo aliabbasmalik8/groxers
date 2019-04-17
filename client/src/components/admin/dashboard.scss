@@ -93,6 +93,9 @@
                     .quantity{
                         width: 12%;
                     }
+                    .quantity1{
+                        display: none;
+                    }
                     .total{
                         width: 11%;
                     }
@@ -136,4 +139,33 @@
 .sidenav---sidenav---_2tBP{
     position: fixed;
     background: #525252;
+}
+
+@media all and(max-width: 767px){
+    .admin_dashbord_banner{
+        font-size: 12px;
+    }
+    .admin_dashbord_banner .orders_banner .order_banner{
+        width: 100%;
+        .user_info_part .info_row{
+            display: block;
+            .info_col{
+                width: 100%;
+            }
+        }
+        .items .single_item{
+            .pid{
+                display: none;
+            }
+            .source{
+                display: none;
+            }
+            .qt{
+                display: none;
+            }
+            .quantity1{
+                display: block;
+            }
+        }
+    }
 }

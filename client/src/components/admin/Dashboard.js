@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -19,6 +20,9 @@ class AdminDashboard extends Component{
         this.state={activeTab: 'home'}
     }
     componentDidMount(){
+        if (this.props.auth.user.type !== "admin" && this.props.auth.user.email !== "admin@groxersonline.com") {
+            this.props.history.push("/");
+        }
         this.props.getAllOrders();
     }
     render(){
@@ -82,5 +86,6 @@ AdminDashboard.propTypes = {
 };
 const mapStateToProps = state => ({
     admin: state.admin,
+    auth: state.auth,
 });
-export default connect(mapStateToProps, { getAllOrders })(AdminDashboard);
+export default connect(mapStateToProps, { getAllOrders })(withRouter(AdminDashboard));

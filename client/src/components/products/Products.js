@@ -35,7 +35,9 @@ class Products extends Component{
             updatedList = updatedList.filter(function(item){
                 return item.name.toLowerCase().search( event.target.value.toLowerCase()) !== -1;
             });
-            this.setState({products: updatedList});
+            this.setState({
+                products: updatedList,
+            });
         }
     }
     getProducts(page){
@@ -47,6 +49,9 @@ class Products extends Component{
             source: source,
         }
         this.props.getProductsWithCatagory(data);
+        if(hasMore === false){
+            this.setState({hasMore: false})
+        }
     }
     render(){
         const { products } = this.state;
@@ -62,7 +67,7 @@ class Products extends Component{
                 hasMore={this.state.hasMore}
                 >
                     <div className="row products_row">
-                        <div className="col-4">
+                        <div className="col-lg-4 col-sm-12">
                             {
                                 products.map((product,index)=>{
                                     if((index+1)%3 ===1){
@@ -73,7 +78,7 @@ class Products extends Component{
                                 })
                             }
                         </div>
-                        <div className="col-4">
+                        <div className="col-lg-4 col-sm-12">
                             {
                                     products.map((product,index)=>{
                                     if((index+1)%3 ===2){
@@ -84,7 +89,7 @@ class Products extends Component{
                                 })
                             }
                         </div>
-                        <div className="col-4">
+                        <div className="col-lg-4 col-sm-12">
                             {
                                     products.map((product,index)=>{
                                     if((index+1)%3 ===0){

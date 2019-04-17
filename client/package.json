@@ -6,6 +6,7 @@
     "@trendmicro/react-sidenav": "^0.4.5",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "cheeseburger-menu": "0.0.13",
     "jquery": "^1.9.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",

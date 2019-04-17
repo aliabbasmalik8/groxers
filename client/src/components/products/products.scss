@@ -130,3 +130,19 @@
         }
     }
 }
+@media all and(max-width: 767px){
+    .product_index_container .products_filter_container_parent .products_filter_container .sub_catagory_filter_parent{
+        display: none;
+    }
+    .product_index_container .products_filter_container_parent .products_filter_container .products_container{
+        width: 100%;
+    }
+    .product_index_container .products_filter_container_parent .products_filter_container .products_container .products_row .product_container{
+        height: unset;
+        .image_parent{
+            img{
+                height: 200px;
+            }
+        }
+    }
+}

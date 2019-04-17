@@ -52,9 +52,9 @@ class Address extends Component{
                     </div>
                     {
                         streetAddress !== "" && city !== "" && zip !== "" && phone !== "" &&
-                        <Link to={"/orders"} >
+                        <a href={"/orders"} >
                             <div className="save_order" onClick={this.onSubmit}>Save Order</div>
-                        </Link> ||
+                        </a> ||
                         <div className="save_order" onClick={this.onSubmit}>Save Order</div>
                     }
                 </div>

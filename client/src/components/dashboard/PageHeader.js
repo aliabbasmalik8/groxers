@@ -1,12 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from "prop-types";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Popup from "reactjs-popup";
 import { logoutUser } from "../../api/authApi";
 import { getProducts, getCartItems } from './../../api/productApi'
 import Card from './Card';
+import CheeseburgerMenu from "cheeseburger-menu"
+import SlidingMenu from './SlidingMenu'
 class PageHeader extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            menuOpen: false,
+        }
+        this.closeMenu = this.closeMenu.bind(this);
+        this.toggleMenu = this.toggleMenu.bind(this);
+    }
+    closeMenu(){
+        this.setState({menuOpen: false})
+    }
+    toggleMenu(){
+        this.setState({menuOpen: !this.state.menuOpen})
+    }
     componentDidMount(){
         if(this.props.cart.length === 0){
             let data={
@@ -28,6 +44,10 @@ class PageHeader extends Component{
     render(){
         const { cart, total, auth } = this.props;
         return(
+            <div>
+            <nav className="mbl_nav">
+                <i class="fas fa-bars" onClick={this.toggleMenu}></i>
+            </nav>
             <div className="page_header">
                 <div className="panel_warpper">
                     {
@@ -85,6 +105,14 @@ class PageHeader extends Component{
                         <NavItem catagory={'Pet Food'} width={'300px'} direction={'bottom left'}/>
                     </div>
                 </nav>
+                <CheeseburgerMenu
+                    right={false}
+                    isOpen={this.state.menuOpen}
+                    closeCallback={this.closeMenu}
+                    >
+                    <SlidingMenu closeCallback={this.closeMenu} />
+                </CheeseburgerMenu>
+            </div>
             </div>
         )
     }
@@ -102,6 +130,14 @@ function NavItem(props){
                 <Card catagory={catagory}/>
             </Popup>
         </a>
+    )
+}
+function MblNavItem(props){
+    const { catagory} = props;
+    return(
+        <div>
+            
+        </div>
     )
 }
 PageHeader.propTypes = {

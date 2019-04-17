@@ -54,7 +54,7 @@ class ChangePassword extends Component{
             <div>
               <PageHeader />
               <div className="container auth_container">
-                <div className="login_title">LOGIN</div>
+                <div className="login_title">CHANGE PASSWORD</div>
                 <div className="auth">            
                   <div className={"error_list " + (Object.keys(errors).length > 0 ? 'error_list_padding' : '')}>
                     <div className="">{errors.email}</div>

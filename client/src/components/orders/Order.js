@@ -51,7 +51,8 @@ class Order extends Component{
                     <div className="single_item title">
                         <div className="header name">NAME</div>
                         <div className="header price">PRICE</div>
-                        <div className="header quantity">QUANTITY</div>
+                        <div className="header quantity qt">QUANTITY</div>
+                        <div className="header quantity1">QTY</div>
                         <div className="header total">TOTAL</div>
                     </div>
                     {
