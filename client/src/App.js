@@ -19,9 +19,9 @@ import Orders from './components/orders/Orders'
 import AdminDashboard from './components/admin/Dashboard'
 import 'bootstrap/dist/css/bootstrap.css'
 // Check for token to keep user logged in
-if (localStorage.jwtToken) {
+if (localStorage.jwtToken1) {
   // Set auth token header auth
-  const token = localStorage.jwtToken;
+  const token = localStorage.jwtToken1;
   setAuthToken(token);
   // Decode token and get user info and exp
   const decoded = jwt_decode(token);
