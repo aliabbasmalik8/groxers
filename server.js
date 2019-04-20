@@ -14,10 +14,8 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-if(true){
-  app.use(express.static(__dirname));
-  app.use(express.static(path.join(__dirname, './client/build')));
-}
+app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, './client/build')));
 // DB Config
 const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
@@ -36,10 +34,8 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use('/api/products', products);
 app.use('/api/cart', carts);
-if(true){
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client', 'build', 'index.html'));
-  });
-}
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client', 'build', 'index.html'));
+});
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));
