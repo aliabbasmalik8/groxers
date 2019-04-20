@@ -63,7 +63,7 @@ export const completeOrder = (data) => dispatch =>{
   axios
     .post("/api/cart/completeOrder", data)
     .then(res =>{
-      dispatch(completeOrderAction(res.data))
+      dispatch(completeOrderAction(data))
     })
 };
 export const deleteOrder = (data, order) => dispatch =>{

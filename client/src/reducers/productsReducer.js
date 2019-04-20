@@ -90,8 +90,8 @@ export default function(state = initialState, action) {
             }
         case GET_ORDERS:
             pendingOrder = Object.assign([], state.pendingOrder);
-            let deliverOrder = Object.assign([], state.pendingOrder);
-            let deliveredOrder = Object.assign([], state.pendingOrder);
+            let deliverOrder = Object.assign([], state.deliverOrder);
+            let deliveredOrder = Object.assign([], state.deliveredOrder);
             action.payload.map(order=>{
                 if(order.status === "makeOrder"){
                     pendingOrder.push(order);
@@ -109,7 +109,18 @@ export default function(state = initialState, action) {
                 deliveredOrder: [...deliveredOrder]
             }
         case COMPLETE_ORDER:
-            return state;
+            deliverOrder = Object.assign([], state.deliverOrder);
+            deliveredOrder = Object.assign([], state.deliveredOrder);
+            index = deliverOrder.findIndex(order => order._id === action.payload._id);
+            if(index !== -1){
+                deliverOrder[index].status = "completeOrder";         
+                deliveredOrder.push(deliverOrder[index]);
+                deliverOrder.splice(index, 1);
+            }
+            return {
+                ...state,
+                deliverOrder: [...deliverOrder],
+            }
         default:
             return state;
     }

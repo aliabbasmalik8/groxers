@@ -24,6 +24,7 @@
     "node-sass": "^4.11.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "path": "^0.12.7",
     "react-router": "^5.0.0",
     "react-sidenav": "^3.1.9",
     "react-slick": "^0.23.2",
