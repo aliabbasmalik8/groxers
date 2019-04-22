@@ -46,7 +46,7 @@ class PageHeader extends Component{
         return(
             <div>
             <nav className="mbl_nav">
-                <i class="fas fa-bars" onClick={this.toggleMenu}></i>
+                <i className="fas fa-bars" onClick={this.toggleMenu}></i>
             </nav>
             <div className="page_header">
                 <div className="panel_warpper">
@@ -66,7 +66,7 @@ class PageHeader extends Component{
                                 <Link to={"/changePassword"}>
                                     <div className="change_password">CHANGE PASSWORD</div>
                                 </Link>
-                                <div className="signout" onClick={()=>this.signOut()}><i class="fas fa-sign-out-alt"></i> SIGN OUT</div>
+                                <div className="signout" onClick={()=>this.signOut()}><i className="fas fa-sign-out-alt"></i> SIGN OUT</div>
                             </span>:
                         <span>
                             <Link to={"/register"}>

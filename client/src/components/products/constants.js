@@ -21,7 +21,6 @@ export const sub_catagories = {
         "Baby Products",
         "General Items",
         "Other",
-        "Frozen Food",
         "Snacks",
         "Beverages",
         "Dairy",

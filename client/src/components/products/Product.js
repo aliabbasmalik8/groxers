@@ -17,8 +17,14 @@ class Product extends Component{
                             {product && product.name}
                         </div>
                         <div className="price">
-                            <div className="current_price">{'PKR ' + product && product.skus && product.skus[0] && product.skus[0].price}</div>
-                            <div className="prev_price"></div>
+                            {
+                                product && product.skus && product.skus[0] &&
+                                <div className="current_price">{'PKR ' +  product.skus[0].price}</div>
+                            }
+                            {
+                                product && product.skus && product.skus[0].prev_price &&
+                                <div className="prev_price"><img className="cross" src="/images/cross.png" />{'PKR '+product.skus[0].prev_price}</div>
+                            }
                         </div>
                         <div className="learn_more">Product Detail</div>
                     </div>

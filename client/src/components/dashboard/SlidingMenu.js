@@ -6,7 +6,7 @@ class SlidingMenu extends Component{
         return(
             <div className="sliding_menu">
                 <div className="uper_div" onClick={()=>closeCallback()}>
-                    <i class="fas fa-times"></i>
+                    <i className="fas fa-times"></i>
                 </div>
                 <div className="catagories">
                     <NavItem catagory={"Men's Clothing"}/>

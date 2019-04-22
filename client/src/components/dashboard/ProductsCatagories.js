@@ -16,7 +16,7 @@ class ProductsCatagories extends Component{
                 </div>
                 <div className="single_row">
                     <ProductcatagoryCard name={'warda'} source={'warda'} image={'https://www.alfatah.pk/media/catalog/product/cache/1/small_image/250x250/9df78eab33525d08d6e5fb8d27136e95/a/f/afp-000113602.png'}/>
-                    <ProductcatagoryCard name={'J.'} source={'J.'} image={'https://www.alfatah.pk/media/catalog/product/cache/1/small_image/250x250/9df78eab33525d08d6e5fb8d27136e95/a/f/afp-000116907.png'}/>
+                    <ProductcatagoryCard name={'J.'} source={'j.'} image={'https://www.alfatah.pk/media/catalog/product/cache/1/small_image/250x250/9df78eab33525d08d6e5fb8d27136e95/a/f/afp-000116907.png'}/>
                 </div>
             </div>
         )
