@@ -49,7 +49,6 @@ export const sub_catagories = {
     ],
     "alfatah":[
         "Beverages",
-        "Frozen Food",
         "General Items",
         "Other",
         "Deli",

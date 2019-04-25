@@ -5,6 +5,8 @@ import Products from './Products'
 import PageHeader from './../dashboard/PageHeader'
 import Footer from './../dashboard/Footer';
 import './products.scss'
+import 'react-rangeslider/lib/index.css'
+
 class ProductIdex extends Component{
     constructor(props){
         super(props);
@@ -13,7 +15,9 @@ class ProductIdex extends Component{
             catagory: "",
             subCatagory: '',
             source: "",
+            price: 10000,
         }
+        this.priceFilterig = this.priceFilterig.bind(this);
     }
     componentDidMount(){
         let catagory = this.props.match.params.productCatagory;
@@ -36,6 +40,11 @@ class ProductIdex extends Component{
             })
         }
     }
+    priceFilterig(price){
+        this.setState({
+            price: price,
+        })
+    }
     render(){
         let catagory = this.props.match.params.productCatagory;
         let source = this.props.match.params.source;
@@ -44,8 +53,8 @@ class ProductIdex extends Component{
                 <PageHeader />
                 <div className="products_filter_container_parent container">
                     <div className="products_filter_container">
-                        <Filter filterProducts={this.filterProducts} catagory={catagory} source={source}/>
-                        <Products products={this.state.products} catagory={catagory} subCatagory={this.state.subCatagory} source={this.state.source}/>
+                        <Filter catagory={catagory} source={source} priceFilterig={this.priceFilterig} price={this.state.price}/>
+                        <Products products={this.state.products} catagory={catagory} subCatagory={this.state.subCatagory} source={this.state.source} price={this.state.price}/>
                     </div>
                 </div>
                 <Footer />

@@ -4,6 +4,7 @@ body{
 }
 .hover_card{
     color: #282828;
+    cursor: unset;
     .card{
         padding: 10px;
         width: 100%;
@@ -21,9 +22,11 @@ body{
                     font-size: 14px;
                     color: #282828;
                     text-transform: uppercase;
+                    cursor: none;
                     &:hover{
                         color: #fc7070;
                         text-decoration: none;
+                        cursor: pointer;
                     }
                 }
             }
@@ -109,14 +112,15 @@ body{
             flex-direction: row-reverse;
             a{
                 color: #fff;
+                cursor: unset;
                 &:hover{
                     text-decoration: none;
                 }
             }
             .inner_header{
                 padding: 0 10px;
-                cursor: pointer;
                 &:hover{
+                    cursor: pointer;
                     color: #fc7070;
                     text-decoration: none;
                 }

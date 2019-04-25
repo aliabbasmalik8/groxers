@@ -93,16 +93,16 @@ class PageHeader extends Component{
                 </div>
                 <nav className="header_wrapper_content">
                     <div className="header_wrapper_bottom">
-                        <NavItem catagory={"Men's Clothing"} width={'250px'} direction={'bottom right'}/>
-                        <NavItem catagory={"Women's Clothing"} width={'400px'} direction={'bottom center'}/>
-                        <NavItem catagory={'Accessories'} width={'400px'} direction={'bottom center'}/>
-                        <NavItem catagory={'Decoration'} width={'500px'} direction={'bottom center'}/>
-                        <NavItem catagory={'Toys'} width={'400px'} direction={'bottom center'}/>
-                        <NavItem catagory={'Grocery'} width={'400px'} direction={'bottom center'}/>
-                        <NavItem catagory={'Health and Beauty'} width={'400px'} direction={'bottom center'}/>
-                        <NavItem catagory={'Household Essentials'} width={'400px'} direction={'bottom center'}/>
-                        <NavItem catagory={'Baby Care'} width={'300px'} direction={'bottom center'}/>
-                        <NavItem catagory={'Pet Food'} width={'300px'} direction={'bottom left'}/>
+                        <NavItem catagory={"Men's Clothing"} width={'200px'} direction={'bottom right'}/>
+                        <NavItem catagory={"Women's Clothing"} width={'200px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Accessories'} width={'200px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Decoration'} width={'200px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Toys'} width={'200px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Grocery'} width={'200px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Health and Beauty'} width={'200px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Household Essentials'} width={'200px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Baby Care'} width={'200px'} direction={'bottom center'}/>
+                        <NavItem catagory={'Pet Food'} width={'200px'} direction={'bottom left'}/>
                     </div>
                 </nav>
                 <CheeseburgerMenu
@@ -130,14 +130,6 @@ function NavItem(props){
                 <Card catagory={catagory}/>
             </Popup>
         </a>
-    )
-}
-function MblNavItem(props){
-    const { catagory} = props;
-    return(
-        <div>
-            
-        </div>
     )
 }
 PageHeader.propTypes = {

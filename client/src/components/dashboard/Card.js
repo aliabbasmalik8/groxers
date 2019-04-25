@@ -6,6 +6,7 @@ class Card extends Component{
         this.state={
             arr1: [],
             arr2: [],
+            arr:[],
         }
     }
     componentDidMount(){
@@ -22,6 +23,7 @@ class Card extends Component{
         this.setState({
             arr1: arr1,
             arr2: arr2,
+            arr:main_to_sub_category_map[catagory],
         })
 
     }
@@ -30,16 +32,10 @@ class Card extends Component{
         return(
             <div className="hover_card">
                 <div className="card">
-                    <div className="title">{catagory}</div>
                     <div className="row">
                         {
-                            this.state.arr1.map((catag, index)=>{
+                            this.state.arr.map((catag, index)=>{
                                 return <HelperCard key={'arr1'+index} catagory={catagory} subCatagory={catag}/>
-                            })
-                        }
-                        {
-                            this.state.arr2.map((catag, index)=>{
-                                return <HelperCard key={'arr2'+index} catagory={catagory} subCatagory={catag}/>
                             })
                         }
                     </div>
@@ -51,7 +47,7 @@ class Card extends Component{
 function HelperCard(props){
     const { catagory, subCatagory } = props;
     return(
-        <div className="_col col-6">
+        <div className="_col col-12">
             <a href={'/products/'+catagory+'/'+subCatagory+"/all"}>
                 {subCatagory}
             </a>

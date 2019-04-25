@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {geolocated} from 'react-geolocated';
+import geolib from 'geolib'
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser } from "./actions/authActions";
@@ -37,6 +39,38 @@ if (localStorage.jwtToken1) {
   }
 }
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      adminLatitude: 31.557861,
+      adminLongitude: 74.390744,
+      distance: 0,
+    }
+  }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.coords){
+      console.log("..................", nextProps.coords.latitude);
+      console.log("...................", nextProps.coords.longitude);
+      let obj1={
+        latitude: this.state.adminLatitude,
+        longitude: this.state.adminLongitude
+      }
+      let obj2={
+        latitude: nextProps.coords.latitude,
+        longitude: nextProps.coords.longitude
+      }
+      let distance = geolib.getDistanceSimple(
+        obj1,
+        obj2,
+        {enableHighAccuracy: true}
+      )
+      this.setState({
+        distance: distance
+      },()=>{
+        console.log(this.state.distance);
+      })
+    }
+  }
   render() {
     return (
       <Provider store={store}>
@@ -64,4 +98,9 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default geolocated({
+  positionOptions: {
+    enableHighAccuracy: false,
+  },
+  userDecisionTimeout: 5000,
+})(App);

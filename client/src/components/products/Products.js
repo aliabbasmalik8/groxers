@@ -27,6 +27,18 @@ class Products extends Component{
                 products: products,
             })
         }
+        if(prevProps.price !== this.props.price){
+            const { products, price } = this.props;
+            var updatedList = products;
+            updatedList = updatedList.filter(function(item){
+                if(item.skus[0].price < price){
+                    return item;
+                }
+            });
+            this.setState({
+                products: updatedList,
+            })
+        }
     }
     filterList(event){
         let { products } = this.props;

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { main_to_sub_category_map, sub_catagories } from './constants'
 import { Link } from "react-router-dom";
+import Slider from 'react-rangeslider'
 class Filter extends Component{
     constructor(props){
         super(props);
         this.state={
-            subCatagories: []
+            subCatagories: [],
         }
     }
     componentDidMount(){
@@ -21,14 +22,19 @@ class Filter extends Component{
         }
     }
     render(){
-        let { filterProducts } = this.props;
-        let { catagory, source } = this.props;
+        let { catagory, source, priceFilterig, price } = this.props;
         return(
             <div className="sub_catagory_filter_parent">
+                <Slider
+                    value={price}
+                    onChange={priceFilterig}
+                    min={0}
+                    max={10000}
+                />
                 <div className="sub_catagory_filter">
                 {
                     this.state.subCatagories.map((subcatagory, index) =>{
-                        return <SingleCatagory key={index} name={subcatagory} catagory={catagory} source={source} filterProducts={filterProducts}/>
+                        return <SingleCatagory key={index} name={subcatagory} catagory={catagory} source={source} />
                     })
                 }
                 </div>
