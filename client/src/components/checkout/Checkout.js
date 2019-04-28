@@ -11,7 +11,7 @@ class Checkout extends Component{
                 <div className="container address_container">
                     <div className="main_row row">
                         <Address />
-                        <OrderSummary total={this.props.total} cartCount={this.props.cartCount}/>
+                        <OrderSummary total={this.props.total} cartCount={this.props.cartCount} charges={this.props.charges}/>
                     </div>
                 </div>
             </div>
@@ -19,7 +19,7 @@ class Checkout extends Component{
     }
 }
 function OrderSummary(props){
-    const { total, cartCount} = props;
+    const { total, cartCount, charges} = props;
     return(
         <div className="order_summry col-4">
             <div className="title">ORDER SUMMARY</div>
@@ -27,6 +27,10 @@ function OrderSummary(props){
                 <div className="_row">
                     <div>ORDER TOTAL</div>
                     <div>{'PKR '+total}</div>
+                </div>
+                <div className="_row">
+                    <div>DELIVERY</div>
+                    <div>{'PKR '+charges}</div>
                 </div>
                 <div className="_row">
                     <div>ITEMS TOTAL</div>
@@ -39,5 +43,6 @@ function OrderSummary(props){
 const mapStateToProps = state => ({
     cartCount: state.items.cart && state.items.cart.length,
     total: state.items.total,
+    charges: state.items.deliveryCharges,
 });
 export default connect(mapStateToProps, null)(Checkout);

@@ -42,15 +42,13 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      adminLatitude: 31.557861,
-      adminLongitude: 74.390744,
+      adminLatitude: 33.630146,
+      adminLongitude: 73.053452,
       distance: 0,
     }
   }
   componentWillReceiveProps(nextProps){
     if(nextProps.coords){
-      console.log("..................", nextProps.coords.latitude);
-      console.log("...................", nextProps.coords.longitude);
       let obj1={
         latitude: this.state.adminLatitude,
         longitude: this.state.adminLongitude
@@ -65,9 +63,7 @@ class App extends Component {
         {enableHighAccuracy: true}
       )
       this.setState({
-        distance: distance
-      },()=>{
-        console.log(this.state.distance);
+        distance: distance/1000,
       })
     }
   }
@@ -87,7 +83,7 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/checkout/address" component={Checkout} />
               <PrivateRoute exact path="/orders" component={Orders} />
-              <PrivateRoute exact path="/cart" component={CartList} />
+              <PrivateRoute exact path="/cart" component={(props) => <CartList {...props} distance={this.state.distance}/>} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/admin/dashboard" component={AdminDashboard} />
             </Switch>

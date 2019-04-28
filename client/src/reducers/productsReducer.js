@@ -6,7 +6,8 @@ import {
     REMOVE_CART_ITEM,
     MAKE_ORDER,
     GET_ORDERS,
-    COMPLETE_ORDER
+    COMPLETE_ORDER,
+    SET_DISTANCE
 } from "../actions/types";
 const initialState = {
    products: [],
@@ -16,6 +17,8 @@ const initialState = {
    deliverOrder: [],
    deliveredOrder: [],
    hasMore: true,
+   distance: 0,
+   deliveryCharges: 0,
 };
 export default function(state = initialState, action) {
     switch (action.type) {
@@ -121,6 +124,15 @@ export default function(state = initialState, action) {
                 ...state,
                 deliverOrder: [...deliverOrder],
             }
+        case SET_DISTANCE:
+            let charges = 250;
+            let km = 0;
+            if(action.payload >12){
+                km = action.payload - 12;
+                km *= 10;
+            }
+            charges = parseInt(charges + km);
+            return {...state, distance: action.payload, deliveryCharges: charges};
         default:
             return state;
     }

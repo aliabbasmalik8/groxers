@@ -11,7 +11,8 @@ import {
     ADMIN_DELIVER_ORDERS,
     ADMIN_COMPLETED_ORDERS,
     COMPLETE_ORDER,
-    DELETE_ORDER
+    DELETE_ORDER,
+    SET_DISTANCE
   } from "./types";
   
 export function getProductsAction(payload){
@@ -89,6 +90,12 @@ export function getAdminAllDeliverOrdersAction(payload){
 export function getAdminAllCompletedOrdersAction(payload){
   return {
       type: ADMIN_COMPLETED_ORDERS,
+      payload,
+  }
+};
+export function setDistanceAction(payload){
+  return {
+      type: SET_DISTANCE,
       payload,
   }
 };

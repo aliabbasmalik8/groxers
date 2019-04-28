@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from "react-router-dom";
 class ProductcatagoryCard extends Component{
     render(){
-        const { name, image, source } = this.props;
+        const { name, source } = this.props;
         return(
             <div className="single_card">
                 <a href={"/products/all/all/"+source}>

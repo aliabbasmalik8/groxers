@@ -34,6 +34,8 @@ const CartSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  address:{type: Object}
+  address:{type: Object},
+  distance: Number,
+  charges: Number
 });
 module.exports = Cart = mongoose.model("carts", CartSchema);

@@ -18,6 +18,7 @@ class Address extends Component{
     };
     onSubmit = e => {
         const { streetAddress, city, zip, phone } = this.state;
+        const { charges } = this.props;
         let address={
             streetAddress: this.state.streetAddress,
             city: this.state.city,
@@ -27,6 +28,7 @@ class Address extends Component{
         let data = {
             address: address,
             sessionId: this.props.auth.user.id,
+            charges: charges,
         }
         if(streetAddress !== "" && city !== "" && zip !== "" && phone !== ""){
             this.props.makeOrder(data);
@@ -67,5 +69,6 @@ Address.propTypes = {
 };
 const mapStateToProps = state => ({
     auth: state.auth,
+    charges: state.items.deliveryCharges,
 });
 export default connect(mapStateToProps, { makeOrder })(withRouter(Address));

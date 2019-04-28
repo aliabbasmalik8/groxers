@@ -18,3 +18,4 @@ export const DELETE_ORDER = "DELETE_ORDER";
 export const MAKE_ADMIN = "MAKE_ADMIN";
 export const CHANGE_PASSWORD = "CHANGE_PASSWORD";
 export const REMOVE_ADMIN = "REMOVE_ADMIN";
+export const SET_DISTANCE = "SET_DISTANCE";

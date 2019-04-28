@@ -13,7 +13,7 @@ class Items extends Component{
                         return <Item key={index} item={item} />
                     })
                 }
-                <GrandTotal total={this.props.total}/>
+                <GrandTotal total={this.props.total} charges={this.props.charges} />
                 <div className="checkout_banner row">
                     <Link to={"/"}>
                         <div className="btn continue_shopping">CONTINUE SHOPPING</div>
@@ -48,17 +48,18 @@ function Header(props){
     )
 }
 function GrandTotal(props){
-    const { total } = props;
+    const { total, charges } = props;
     return(
         <div className="grand_total row">
-            <div>{'Delivery Charges: PKR 200' }</div>
+            <div>{'Delivery Charges: '+ charges }</div>
             <div>{'Total: PKR ' + total }</div>
-            <div>{'Grand Total: PKR ' + (parseInt(total)+200) }</div>
+            <div>{'Grand Total: PKR ' + (parseInt(total)+charges) }</div>
         </div>
     )
 }
 const mapStateToProps = state => ({
     cart: state.items.cart,
     total: state.items.total,
+    charges: state.items.deliveryCharges,
 });
 export default connect(mapStateToProps, null)(withRouter(Items))

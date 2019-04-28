@@ -66,7 +66,7 @@ router.post("/makeOrder", (req, res) => {
         .then(item => {
             if (item) {
                 item
-                    .updateOne({$set: {"status":'makeOrder', "address": req.body.address}})
+                    .updateOne({$set: {"status":'makeOrder', "address": req.body.address, "charges": req.body.charges}})
                     .then(cart =>res.json(item))
                     .catch(err => console.log(err))
 

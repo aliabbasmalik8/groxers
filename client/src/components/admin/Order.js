@@ -79,8 +79,8 @@ class Order extends Component{
                             <div className="btn btn1" onClick={this._deleteOrder}>DISCARD ORDER</div>
                         </div>
                     }
-                    <div className="quantity"></div>
-                    <div className="grand_total">{parseInt(order.total)+200}</div>
+                    <div className="quantity">{'delivery charges: '+ (order.charges?order.charges: 250)}</div>
+                    <div className="grand_total">{parseInt(order.total)+(order.charges ? order.charges : 250)}</div>
                 </div>
             </div>
         )
